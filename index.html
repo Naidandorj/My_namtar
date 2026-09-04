@@ -49,7 +49,7 @@ footer{padding:35px 0;color:var(--muted);text-align:center;font-size:13px}
   opacity:.8;
 }
 #introVideo video{
-  width:100%;height:100%;object-fit:cover;
+  width:100%;height:100%;object-fit:contain;
   transform:scale(1.015);
   filter:saturate(1.04) contrast(1.03);
   animation:introZoom 15.3s cubic-bezier(.2,.65,.2,1) both;
@@ -92,6 +92,10 @@ body.intro-lock{overflow:hidden}
 @media(prefers-reduced-motion:reduce){
   #introVideo,#introVideo video,#cvPage{animation:none!important;transition:none!important}
 }
+
+.biography-text p{font-size:17px;margin:0 0 18px}.biography-text p:last-child{margin-bottom:0}
+#introPlayer{object-fit:contain!important;background:#05070c}
+@media(max-width:600px){#introPlayer{object-fit:contain!important}.introBtn{padding:9px 12px;font-size:12px}.section-title{font-size:29px}}
 </style>
 </head>
 <body>
@@ -102,79 +106,8 @@ body.intro-lock{overflow:hidden}
   <div id="introProgress"></div>
   <button id="skipIntro" type="button">Алгасах →</button>
 </div>
-
-<div id="cvPage">
-<header id="top">
-<div class="wrap hero">
-<div>
-<span class="badge">● ONLINE CV & PORTFOLIO</span>
-<h1>Нямжавын<br>Найдандорж</h1>
-<h2>Software Development · Hardware · Digital Projects · Heavy Truck Driver</h2>
-<p>Техник, компьютер, программ хангамж болон дижитал технологийн чиглэлээр туршлагатай. Шинэ технологи, веб хөгжүүлэлт, автоматжуулалт болон практик техникийн ажлыг сонирхон ажилладаг.</p>
-<div class="actions">
-<a class="btn" href="#contact">Холбоо барих</a>
-<a class="btn alt" href="javascript:window.print()">CV хэвлэх / PDF</a>
-</div>
-</div>
-<div class="photo"><img src="profile.jpg" alt="Нямжавын Найдандорж"></div>
-</div>
-</header>
-
-<nav><div class="wrap navin"><a class="logo" href="#top">NN.</a><div class="links"><a href="#about">Тухай</a><a href="#experience">Туршлага</a><a href="#education">Боловсрол</a><a href="#skills">Ур чадвар</a><a href="#projects">Төслүүд</a><a href="#contact">Холбоо</a></div></div></nav>
-
-<main>
-<section id="about"><div class="wrap">
-<h2 class="section-title">Миний тухай</h2><p class="section-sub">Техник ба технологийг хослуулсан туршлага.</p>
-<div class="grid">
-<div class="card"><span class="meta">PROFILE</span><h3>Товч танилцуулга</h3><p class="muted">Математик–программ хангамжийн мэргэжилтэй. Hardware, software, веб технологи, график дизайн болон практик техникийн ажлын туршлагатай.</p></div>
-<div class="card"><span class="meta">LOCATION</span><h3>Монгол Улс</h3><p class="muted">Сэлэнгэ аймаг, Мандал сум / Зүүнхараа орчим.</p></div>
-</div>
-</div></section>
-
-<section id="experience"><div class="wrap">
-<h2 class="section-title">Ажлын туршлага</h2><p class="section-sub">Ажлын замнал</p>
-<div class="card timeline">
-<div class="item"><span class="meta">2010 — 2012</span><h3>Source Code ХХК — Hardware Engineer</h3><p class="muted">Компьютерийн техник хангамж, засвар үйлчилгээ болон техникийн чиглэлээр ажилласан.</p></div>
-<div class="item"><span class="meta">2013 — 2014</span><h3>Зүүнхараа Хүүхдийн ордон — Багш</h3><p class="muted">Компьютер болон биеийн тамирын хичээл зааж ажилласан.</p></div>
-<div class="item"><span class="meta">Одоо</span><h3>Хүнд даацын автомашины жолооч</h3><p class="muted">Хүнд даацын автомашин, тээвэрлэлтийн чиглэлээр ажиллаж байна.</p></div>
-</div>
-</div></section>
-
-<section id="education"><div class="wrap">
-<h2 class="section-title">Боловсрол</h2><p class="section-sub">Сурч эзэмшсэн мэдлэг</p>
-<div class="card"><span class="meta">2009 — 2013</span><h3>МУИС — Математик / Программ хангамж</h3><p class="muted">Математик болон программ хангамжийн чиглэлээр дээд боловсрол эзэмшсэн.</p></div>
-</div></section>
-
-<section id="skills"><div class="wrap">
-<h2 class="section-title">Ур чадвар</h2><p class="section-sub">Технологи болон бүтээлч хэрэгслүүд</p>
-<div class="card"><div class="tags">
-<span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">PHP</span><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">C#</span><span class="tag">Visual Studio</span><span class="tag">WordPress</span><span class="tag">Joomla</span><span class="tag">Photoshop</span><span class="tag">CorelDRAW</span><span class="tag">Microsoft Office</span><span class="tag">GitHub</span>
-</div></div>
-</div></section>
-
-<section id="projects"><div class="wrap">
-<h2 class="section-title">Төслүүд</h2><p class="section-sub">Веб болон дижитал төслүүд</p>
-<div class="grid">
-<div class="card"><span class="meta">WEB</span><h3>Personal Portfolio</h3><p class="muted">Өөрийн веб танилцуулга, CV болон төслүүдийг нэг дор харуулах веб.</p><a class="meta" href="https://naidandorj.github.io/My_new_web/" target="_blank">GitHub Pages →</a></div>
-<div class="card"><span class="meta">E-COMMERCE</span><h3>Онлайн дэлгүүрийн төсөл</h3><p class="muted">Бэлэн хувцасны дэлгүүрийн веб, бүтээгдэхүүн танилцуулга болон хүргэлтийн мэдээллийн шийдэл.</p></div>
-</div>
-</div></section>
-
-<section id="contact"><div class="wrap"><div class="contact">
-<h2 class="section-title">Холбоо барих</h2><p class="muted">Ажил, төсөл болон хамтын ажиллагааны талаар холбогдоорой.</p>
-<div class="contact-grid">
-<a href="tel:+97695196569">📞 <strong>95196569</strong><br><span class="muted">Утас</span></a>
-<a href="https://www.facebook.com/share/19Gd934bKd/" target="_blank">📘 <strong>Facebook</strong><br><span class="muted">Профайл / хуудас</span></a>
-<a href="https://github.com/naidandorj" target="_blank">💻 <strong>GitHub</strong><br><span class="muted">Projects</span></a>
-<a href="mailto:your-email@example.com">✉️ <strong>Email</strong><br><span class="muted">Имэйлээр холбогдох</span></a>
-</div>
-</div></div></section>
-</main>
-<footer>© 2026 Нямжавын Найдандорж · Online CV</footer>
-</div>
-
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+(function(){
   const overlay=document.getElementById('introVideo');
   const video=document.getElementById('introPlayer');
   const skip=document.getElementById('skipIntro');
@@ -206,7 +139,99 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Some mobile browsers block autoplay until play() is requested.
   video.play().catch(()=>{});
-});
+})();
 </script>
+
+<div id="cvPage">
+<header id="top">
+<div class="wrap hero">
+<div>
+<span class="badge">● ONLINE CV & PORTFOLIO</span>
+<h1>Нямжавын<br>Найдандорж</h1>
+<h2>Software Development · Hardware · Digital Projects · Heavy Truck Driver</h2>
+<p>Техник, компьютер, программ хангамж болон дижитал технологийн чиглэлээр туршлагатай. Шинэ технологи, веб хөгжүүлэлт, автоматжуулалт болон практик техникийн ажлыг сонирхон ажилладаг.</p>
+<div class="actions">
+<a class="btn" href="#contact">Холбоо барих</a>
+<a class="btn alt" href="javascript:window.print()">CV хэвлэх / PDF</a>
+</div>
+</div>
+<div class="photo"><img src="profile.jpg" alt="Нямжавын Найдандорж"></div>
+</div>
+</header>
+
+<nav><div class="wrap navin"><a class="logo" href="#top">NN.</a><div class="links"><a href="#biography">Намтар</a><a href="#about">Тухай</a><a href="#career">Ажил</a><a href="#experience">Туршлага</a><a href="#education">Боловсрол</a><a href="#skills">Ур чадвар</a><a href="#projects">Төслүүд</a><a href="#hobbies">Хобби</a><a href="#contact">Холбоо</a></div></div></nav>
+
+<main>
+<section id="biography"><div class="wrap">
+<h2 class="section-title">Миний намтар</h2><p class="section-sub">Боловсрол, зан чанар, ажил амьдралын замнал</p>
+<div class="card biography-text">
+<p>Намайг <strong>Нямжавын Найдандорж</strong> гэдэг. Би Хөвсгөл аймгийн Цэцэрлэг суманд төрсөн. 1999 онд тус сургуулийн 10 жилийн сургуульд орж, 2002 онд Орхон аймгийн Баян-Өндөр сумын 2-р арван жилд шилжин ирж суралцан, 2009 оны 5-р сарын 30-нд тус сургуулийг А.Долгорсүрэн багштай 11-А ангийг төгссөн.</p>
+<p>Сурагч ахуй наснаасаа сургуулиа төлөөлөн аймгийн тэмцээнүүдэд амжилттай оролцож байсан. Хувийн зан араншингийн хувьд төлөв түвшин, аливаа зүйлд өөрийн үнэлэлт дүгнэлтийг өгч чаддаг, анги хамт олныхоо дунд төдийгүй цаашид ажил албанд удирдан зохион байгуулах чадвартай.</p>
+<p>Хариуцсан ажил, үүрэг, даалгавартаа эзэн болж хариуцлага хүлээх чадвартай, нийтэч, нийгмийн идэвх оролцоо сайн, үнэнч шударга, даруу төлөв зантай.</p>
+</div></div></section>
+
+<section id="about"><div class="wrap">
+<h2 class="section-title">Миний тухай</h2><p class="section-sub">Техник ба технологийг хослуулсан туршлага.</p>
+<div class="grid">
+<div class="card"><span class="meta">PROFILE</span><h3>Товч танилцуулга</h3><p class="muted">Математик–программ хангамжийн мэргэжилтэй. Hardware, software, веб технологи, график дизайн болон практик техникийн ажлын туршлагатай.</p></div>
+<div class="card"><span class="meta">LOCATION</span><h3>Монгол Улс</h3><p class="muted">Сэлэнгэ аймаг, Мандал сум / Зүүнхараа орчим.</p></div>
+</div>
+</div></section>
+
+<section id="experience"><div class="wrap">
+<h2 class="section-title">Ажлын туршлага</h2><p class="section-sub">Ажлын замнал</p>
+<div class="card timeline">
+<div class="item"><span class="meta">2010 — 2012</span><h3>Source Code ХХК — Hardware Engineer</h3><p class="muted">Компьютерийн техник хангамж, засвар үйлчилгээ болон техникийн чиглэлээр ажилласан.</p></div>
+<div class="item"><span class="meta">2013 — 2014</span><h3>Зүүнхараа Хүүхдийн ордон — Багш</h3><p class="muted">Компьютер болон биеийн тамирын хичээл зааж ажилласан.</p></div>
+<div class="item"><span class="meta">Одоо</span><h3>Хүнд даацын автомашины жолооч</h3><p class="muted">Хүнд даацын автомашин, тээвэрлэлтийн чиглэлээр ажиллаж байна.</p></div>
+</div>
+</div></section>
+
+<section id="education"><div class="wrap">
+<h2 class="section-title">Боловсрол</h2><p class="section-sub">Сурч эзэмшсэн мэдлэг</p>
+<div class="card"><span class="meta">2009 — 2013</span><h3>МУИС — Математик / Программ хангамж</h3><p class="muted">Математик болон программ хангамжийн чиглэлээр дээд боловсрол эзэмшсэн.</p></div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+<h2 class="section-title">Ур чадвар</h2><p class="section-sub">Технологи болон бүтээлч хэрэгслүүд</p>
+<div class="card"><div class="tags">
+<span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">PHP</span><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">C#</span><span class="tag">Visual Studio</span><span class="tag">WordPress</span><span class="tag">Joomla</span><span class="tag">Photoshop</span><span class="tag">CorelDRAW</span><span class="tag">Microsoft Office</span><span class="tag">GitHub</span>
+</div></div>
+</div></section>
+
+<section id="career"><div class="wrap">
+<h2 class="section-title">Ажил, хөдөлмөрийн замнал</h2><p class="section-sub">Ажилласан байгууллага, албан тушаал</p>
+<div class="card timeline">
+<div class="item"><span class="meta">2009 — 2013</span><h3>Монгол Улсын Их Сургуулийн харьяа Улаанбаатар сургууль</h3><p class="muted">Математик, Программ хангамж мэргэжлээр суралцаж төгссөн.</p></div>
+<div class="item"><span class="meta">2013 — 2014</span><h3>Зүүнхараа Хүүхдийн ордон — Биеийн тамир, компьютерийн багш</h3><p class="muted">Зүүнхараа Хүүхдийн ордонд биеийн тамир болон компьютерийн багшаар ажилласан.</p></div>
+<div class="item"><span class="meta">2015 — 2016</span><h3>Орхон аймгийн Хөдөлмөрийн хэлтэс — Мэргэжилтэн</h3><p class="muted">Хөдөлмөрийн зах зээлийн мэдээ, мэдээлэл болон программ хангамж хариуцсан мэргэжилтнээр гэрээгээр ажилласан.</p></div>
+<div class="item"><span class="meta">2017 — 2019</span><h3>Дорны Өртөө ХХК — ХДАМЖ</h3><p class="muted">Хүнд даацын автомашины жолоочийн чиглэлээр ажилласан.</p></div>
+<div class="item"><span class="meta">2020 оны 7-р сар — Одоо</span><h3>Энержи Ресурс ХХК — ХДАМЖ</h3><p class="muted">Хүнд даацын автомашины жолоочийн мэргэжлээр тогтвор суурьшилтай ажиллаж байна.</p></div>
+</div></div></section>
+
+<section id="projects"><div class="wrap">
+<h2 class="section-title">Төслүүд</h2><p class="section-sub">Веб болон дижитал төслүүд</p>
+<div class="grid">
+<div class="card"><span class="meta">WEB</span><h3>Personal Portfolio</h3><p class="muted">Өөрийн веб танилцуулга, CV болон төслүүдийг нэг дор харуулах веб.</p><a class="meta" href="https://naidandorj.github.io/My_new_web/" target="_blank">GitHub Pages →</a></div>
+<div class="card"><span class="meta">E-COMMERCE</span><h3>Онлайн дэлгүүрийн төсөл</h3><p class="muted">Бэлэн хувцасны дэлгүүрийн веб, бүтээгдэхүүн танилцуулга болон хүргэлтийн мэдээллийн шийдэл.</p></div>
+</div>
+</div></section>
+
+<section id="hobbies"><div class="wrap">
+<h2 class="section-title">Авьяас, мэдлэг, гарын дүй, чадвар, хобби</h2><p class="section-sub">Сонирхдог спорт, оюуны тоглоомууд</p>
+<div class="card"><div class="tags"><span class="tag">♟ Шатар</span><span class="tag">♟ Даам</span><span class="tag">🏀 Сагсан бөмбөг</span><span class="tag">🏐 Гар бөмбөг</span><span class="tag">🎾 Теннис</span></div><p class="muted" style="margin-top:20px">Шатар, даам болон сагсан бөмбөг, гар бөмбөг, теннис зэрэг спортуудыг сонирхон тоглодог. Ялангуяа гар бөмбөг болон шатар тоглох дуртай.</p></div></div></section>
+
+<section id="contact"><div class="wrap"><div class="contact">
+<h2 class="section-title">Холбоо барих</h2><p class="muted">Ажил, төсөл болон хамтын ажиллагааны талаар холбогдоорой.</p>
+<div class="contact-grid">
+<a href="tel:+97695196569">📞 <strong>95196569</strong><br><span class="muted">Утас</span></a>
+<a href="https://www.facebook.com/share/19Gd934bKd/" target="_blank">📘 <strong>Facebook</strong><br><span class="muted">Профайл / хуудас</span></a>
+<a href="https://github.com/naidandorj" target="_blank">💻 <strong>GitHub</strong><br><span class="muted">Projects</span></a>
+<a href="mailto:your-email@example.com">✉️ <strong>Email</strong><br><span class="muted">Имэйлээр холбогдох</span></a>
+</div>
+</div></div></section>
+</main>
+<footer>© 2026 Нямжавын Найдандорж · Online CV</footer>
+</div>
 </body>
 </html>
