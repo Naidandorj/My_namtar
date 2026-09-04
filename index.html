@@ -106,89 +106,43 @@ body.intro-lock{overflow:hidden}
   <div id="introProgress"></div>
   <button id="skipIntro" type="button">Алгасах →</button>
 </div>
+  
 <script>
-(function(){
-
-  const overlay = document.getElementById('introVideo');
-  const video = document.getElementById('introPlayer');
-  const skip = document.getElementById('skipIntro');
-  const cv = document.getElementById('cvPage');
-  const progress = document.getElementById('introProgress');
-
-  let closed = false;
+document.addEventListener('DOMContentLoaded', function () {
+  const overlay=document.getElementById('introVideo');
+  const video=document.getElementById('introPlayer');
+  const skip=document.getElementById('skipIntro');
+  const cv=document.getElementById('cvPage');
+  const progress=document.getElementById('introProgress');
+  let closed=false;
 
   document.body.classList.add('intro-lock');
 
   function revealCV(){
-
-    if(closed) return;
-
-    closed = true;
-
-    // CV-г шууд харагдуулна
-    cv.style.opacity = '1';
-    cv.style.transform = 'scale(1)';
-    cv.style.filter = 'blur(0)';
-
-    cv.classList.add('ready');
-
-    // Intro-г хаана
+    if(closed)return;
+    closed=true;
+    progress.style.width='100%';
     overlay.classList.add('hide');
-
+    cv.classList.add('ready');
     document.body.classList.remove('intro-lock');
-
-    // 1.2 секундийн дараа intro-г бүр мөсөн устгана
-    setTimeout(function(){
-      if(overlay){
-        overlay.remove();
-      }
-    },1200);
-
+    setTimeout(()=>overlay.remove(),1200);
   }
 
-  // Видео явж байх үед progress
-  video.addEventListener('timeupdate', function(){
-
+  video.addEventListener('timeupdate',()=>{
     if(video.duration && isFinite(video.duration)){
-
-      const percent =
-        (video.currentTime / video.duration) * 100;
-
-      progress.style.width = percent + '%';
-
+      progress.style.width=(video.currentTime/video.duration*100)+'%';
     }
-
   });
 
-  // Видео дуусах
-  video.addEventListener('ended', revealCV);
+  video.addEventListener('ended',revealCV);
+  video.addEventListener('error',revealCV);
+  skip.addEventListener('click',revealCV);
 
-  // Видео ачаалагдахгүй бол CV-г гаргах
-  video.addEventListener('error', revealCV);
-
-  // Алгасах товч
-  skip.addEventListener('click', revealCV);
-
-  // Autoplay эхлүүлэх
-  video.play().catch(function(){
-
-    // Autoplay ажиллахгүй байсан ч
-    // CV-г гацуулахгүй
-    setTimeout(revealCV, 3000);
-
-  });
-
-  // Нөөц хамгаалалт:
-  // ямар нэг шалтгаанаар ended event ажиллахгүй бол
-  // 20 секундийн дараа CV автоматаар гарна.
-  setTimeout(function(){
-
-    revealCV();
-
-  }, 20000);
-
-})();
+  // Some mobile browsers block autoplay until play() is requested.
+  video.play().catch(()=>{});
+});
 </script>
+  
 <div id="cvPage">
 <header id="top">
 <div class="wrap hero">
