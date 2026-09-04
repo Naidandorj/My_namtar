@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Нямжавын Найдандорж — Online CV & Portfolio">
+<meta name="theme-color" content="#0b1220">
+<title>Нямжавын Найдандорж | Online CV</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#657089;--line:#e7ebf2;--accent:#2563eb;--accent2:#0ea5e9;--dark:#0b1220}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:inherit;text-decoration:none}.wrap{max-width:1080px;margin:auto;padding:0 22px}
+header{min-height:100vh;display:flex;align-items:center;background:radial-gradient(circle at 85% 20%,#1d4ed8 0,#0b1220 38%,#070b14 100%);color:#fff;overflow:hidden;position:relative}
+header:before{content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-180px;top:-120px;box-shadow:0 0 0 70px rgba(255,255,255,.02),0 0 0 140px rgba(255,255,255,.015)}
+.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:60px;align-items:center;position:relative;z-index:1;padding:70px 0}
+.badge{display:inline-flex;gap:8px;align-items:center;padding:8px 13px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);border-radius:999px;font-size:13px;color:#dbeafe}
+h1{font-size:clamp(42px,7vw,76px);line-height:1.02;letter-spacing:-3px;margin:18px 0 18px}
+.hero h2{font-size:clamp(18px,2.2vw,25px);font-weight:500;color:#cbd5e1;margin:0 0 24px}
+.hero p{max-width:650px;color:#b9c5d8;font-size:17px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:12px;font-weight:700;border:1px solid rgba(255,255,255,.18);background:#fff;color:#0b1220}
+.btn.alt{background:transparent;color:#fff}
+.photo{justify-self:end;width:min(330px,100%);aspect-ratio:4/5;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.18);box-shadow:0 25px 80px rgba(0,0,0,.4);transform:rotate(2deg)}
+.photo img{width:100%;height:100%;object-fit:cover}
+nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.navin{display:flex;justify-content:space-between;align-items:center;min-height:62px}
+.logo{font-weight:900}.links{display:flex;gap:22px;font-size:14px;color:var(--muted)}
+section{padding:80px 0}.section-title{font-size:34px;letter-spacing:-1px;margin:0 0 10px}.section-sub{color:var(--muted);margin:0 0 34px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:0 10px 35px rgba(15,23,42,.04)}
+.card h3{margin:0 0 5px;font-size:20px}.meta{color:var(--accent);font-weight:700;font-size:14px}.muted{color:var(--muted)}
+.timeline{position:relative;padding-left:28px}.timeline:before{content:"";position:absolute;left:5px;top:4px;bottom:4px;width:2px;background:var(--line)}.item{position:relative;margin-bottom:28px}.item:before{content:"";position:absolute;left:-28px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--bg)}
+.tags{display:flex;flex-wrap:wrap;gap:9px}.tag{padding:9px 12px;border-radius:10px;background:#eef4ff;color:#1e40af;font-weight:700;font-size:14px}
+.contact{background:var(--dark);color:#fff;border-radius:28px;padding:42px}.contact .muted{color:#aebbd0}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:25px}.contact a{display:block;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);padding:15px;border-radius:13px}
+footer{padding:35px 0;color:var(--muted);text-align:center;font-size:13px}
+@media(max-width:800px){.hero{grid-template-columns:1fr;gap:35px}.photo{justify-self:start;width:240px}.grid,.contact-grid{grid-template-columns:1fr}.links{display:none}section{padding:60px 0}h1{letter-spacing:-2px}}
+@media print{nav,.actions,footer{display:none}header{min-height:auto;background:#fff;color:#111}.hero{padding:30px 0}.hero p,.hero h2{color:#333}.photo{box-shadow:none}.card{box-shadow:none}}
+
+/* Cinematic intro video */
+#introVideo{
+  position:fixed;inset:0;z-index:9999;background:#05070c;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;opacity:1;visibility:visible;
+  transition:opacity 1.05s cubic-bezier(.22,1,.36,1),visibility 1.05s;
+}
+#introVideo:after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at center,transparent 35%,rgba(0,0,0,.28) 100%);
+  opacity:.8;
+}
+#introVideo video{
+  width:100%;height:100%;object-fit:cover;
+  transform:scale(1.015);
+  filter:saturate(1.04) contrast(1.03);
+  animation:introZoom 15.3s cubic-bezier(.2,.65,.2,1) both;
+}
+#introVideo.hide{opacity:0;visibility:hidden;pointer-events:none;}
+#introVideo.hide video{
+  animation:none;
+  transform:scale(1.12);
+  transition:transform 1.05s cubic-bezier(.22,1,.36,1),filter 1.05s ease;
+  filter:blur(2px) brightness(1.15);
+}
+@keyframes introZoom{
+  from{transform:scale(1.015)}
+  to{transform:scale(1.075)}
+}
+#skipIntro{
+  position:absolute;right:24px;bottom:24px;z-index:3;
+  border:1px solid rgba(255,255,255,.3);
+  background:rgba(5,10,20,.42);backdrop-filter:blur(14px);
+  color:#fff;border-radius:999px;padding:11px 18px;
+  font-weight:700;cursor:pointer;
+  box-shadow:0 10px 35px rgba(0,0,0,.25);
+  transition:background .2s,transform .2s;
+}
+#skipIntro:hover{background:rgba(255,255,255,.16);transform:translateY(-2px)}
+#introProgress{
+  position:absolute;left:0;bottom:0;height:3px;width:0%;
+  z-index:4;background:rgba(255,255,255,.9);
+  box-shadow:0 0 18px rgba(255,255,255,.6);
+}
+#cvPage{
+  opacity:0;transform:scale(.965);filter:blur(8px);
+  transform-origin:center top;
+  transition:opacity 1s cubic-bezier(.22,1,.36,1),
+             transform 1.15s cubic-bezier(.22,1,.36,1),
+             filter 1s ease;
+}
+#cvPage.ready{opacity:1;transform:scale(1);filter:blur(0)}
+body.intro-lock{overflow:hidden}
+@media(prefers-reduced-motion:reduce){
+  #introVideo,#introVideo video,#cvPage{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div id="introVideo" aria-label="Нүүр хуудасны танилцуулга видео">
+  <video id="introPlayer" autoplay muted playsinline preload="auto">
+    <source src="intro.mp4" type="video/mp4">
+  </video>
+  <div id="introProgress"></div>
+  <button id="skipIntro" type="button">Алгасах →</button>
+</div>
+
+<div id="cvPage">
+<header id="top">
+<div class="wrap hero">
+<div>
+<span class="badge">● ONLINE CV & PORTFOLIO</span>
+<h1>Нямжавын<br>Найдандорж</h1>
+<h2>Software Development · Hardware · Digital Projects · Heavy Truck Driver</h2>
+<p>Техник, компьютер, программ хангамж болон дижитал технологийн чиглэлээр туршлагатай. Шинэ технологи, веб хөгжүүлэлт, автоматжуулалт болон практик техникийн ажлыг сонирхон ажилладаг.</p>
+<div class="actions">
+<a class="btn" href="#contact">Холбоо барих</a>
+<a class="btn alt" href="javascript:window.print()">CV хэвлэх / PDF</a>
+</div>
+</div>
+<div class="photo"><img src="profile.jpg" alt="Нямжавын Найдандорж"></div>
+</div>
+</header>
+
+<nav><div class="wrap navin"><a class="logo" href="#top">NN.</a><div class="links"><a href="#about">Тухай</a><a href="#experience">Туршлага</a><a href="#education">Боловсрол</a><a href="#skills">Ур чадвар</a><a href="#projects">Төслүүд</a><a href="#contact">Холбоо</a></div></div></nav>
+
+<main>
+<section id="about"><div class="wrap">
+<h2 class="section-title">Миний тухай</h2><p class="section-sub">Техник ба технологийг хослуулсан туршлага.</p>
+<div class="grid">
+<div class="card"><span class="meta">PROFILE</span><h3>Товч танилцуулга</h3><p class="muted">Математик–программ хангамжийн мэргэжилтэй. Hardware, software, веб технологи, график дизайн болон практик техникийн ажлын туршлагатай.</p></div>
+<div class="card"><span class="meta">LOCATION</span><h3>Монгол Улс</h3><p class="muted">Сэлэнгэ аймаг, Мандал сум / Зүүнхараа орчим.</p></div>
+</div>
+</div></section>
+
+<section id="experience"><div class="wrap">
+<h2 class="section-title">Ажлын туршлага</h2><p class="section-sub">Ажлын замнал</p>
+<div class="card timeline">
+<div class="item"><span class="meta">2010 — 2012</span><h3>Source Code ХХК — Hardware Engineer</h3><p class="muted">Компьютерийн техник хангамж, засвар үйлчилгээ болон техникийн чиглэлээр ажилласан.</p></div>
+<div class="item"><span class="meta">2013 — 2014</span><h3>Зүүнхараа Хүүхдийн ордон — Багш</h3><p class="muted">Компьютер болон биеийн тамирын хичээл зааж ажилласан.</p></div>
+<div class="item"><span class="meta">Одоо</span><h3>Хүнд даацын автомашины жолооч</h3><p class="muted">Хүнд даацын автомашин, тээвэрлэлтийн чиглэлээр ажиллаж байна.</p></div>
+</div>
+</div></section>
+
+<section id="education"><div class="wrap">
+<h2 class="section-title">Боловсрол</h2><p class="section-sub">Сурч эзэмшсэн мэдлэг</p>
+<div class="card"><span class="meta">2009 — 2013</span><h3>МУИС — Математик / Программ хангамж</h3><p class="muted">Математик болон программ хангамжийн чиглэлээр дээд боловсрол эзэмшсэн.</p></div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+<h2 class="section-title">Ур чадвар</h2><p class="section-sub">Технологи болон бүтээлч хэрэгслүүд</p>
+<div class="card"><div class="tags">
+<span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">PHP</span><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">C#</span><span class="tag">Visual Studio</span><span class="tag">WordPress</span><span class="tag">Joomla</span><span class="tag">Photoshop</span><span class="tag">CorelDRAW</span><span class="tag">Microsoft Office</span><span class="tag">GitHub</span>
+</div></div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+<h2 class="section-title">Төслүүд</h2><p class="section-sub">Веб болон дижитал төслүүд</p>
+<div class="grid">
+<div class="card"><span class="meta">WEB</span><h3>Personal Portfolio</h3><p class="muted">Өөрийн веб танилцуулга, CV болон төслүүдийг нэг дор харуулах веб.</p><a class="meta" href="https://naidandorj.github.io/My_new_web/" target="_blank">GitHub Pages →</a></div>
+<div class="card"><span class="meta">E-COMMERCE</span><h3>Онлайн дэлгүүрийн төсөл</h3><p class="muted">Бэлэн хувцасны дэлгүүрийн веб, бүтээгдэхүүн танилцуулга болон хүргэлтийн мэдээллийн шийдэл.</p></div>
+</div>
+</div></section>
+
+<section id="contact"><div class="wrap"><div class="contact">
+<h2 class="section-title">Холбоо барих</h2><p class="muted">Ажил, төсөл болон хамтын ажиллагааны талаар холбогдоорой.</p>
+<div class="contact-grid">
+<a href="tel:+97699910048">📞 <strong>9991-0048</strong><br><span class="muted">Утас</span></a>
+<a href="https://www.facebook.com/share/19Gd934bKd/" target="_blank">📘 <strong>Facebook</strong><br><span class="muted">Профайл / хуудас</span></a>
+<a href="https://github.com/naidandorj" target="_blank">💻 <strong>GitHub</strong><br><span class="muted">Projects</span></a>
+<a href="mailto:your-email@example.com">✉️ <strong>Email</strong><br><span class="muted">Имэйлээр холбогдох</span></a>
+</div>
+</div></div></section>
+</main>
+<footer>© 2026 Нямжавын Найдандорж · Online CV</footer>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const overlay=document.getElementById('introVideo');
+  const video=document.getElementById('introPlayer');
+  const skip=document.getElementById('skipIntro');
+  const cv=document.getElementById('cvPage');
+  const progress=document.getElementById('introProgress');
+  let closed=false;
+
+  document.body.classList.add('intro-lock');
+
+  function revealCV(){
+    if(closed)return;
+    closed=true;
+    progress.style.width='100%';
+    overlay.classList.add('hide');
+    cv.classList.add('ready');
+    document.body.classList.remove('intro-lock');
+    setTimeout(()=>overlay.remove(),1200);
+  }
+
+  video.addEventListener('timeupdate',()=>{
+    if(video.duration && isFinite(video.duration)){
+      progress.style.width=(video.currentTime/video.duration*100)+'%';
+    }
+  });
+
+  video.addEventListener('ended',revealCV);
+  video.addEventListener('error',revealCV);
+  skip.addEventListener('click',revealCV);
+
+  // Some mobile browsers block autoplay until play() is requested.
+  video.play().catch(()=>{});
+});
+</script>
+</body>
+</html>
