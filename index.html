@@ -6,36 +6,154 @@
 <meta name="description" content="Нямжавын Найдандорж — Online CV & Portfolio">
 <meta name="theme-color" content="#0b1220">
 <title>Нямжавын Найдандорж | Online CV</title>
+
 <style>
-:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#657089;--line:#e7ebf2;--accent:#2563eb;--accent2:#0ea5e9;--dark:#0b1220}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-a{color:inherit;text-decoration:none}.wrap{max-width:1080px;margin:auto;padding:0 22px}
-header{min-height:100vh;display:flex;align-items:center;background:radial-gradient(circle at 85% 20%,#1d4ed8 0,#0b1220 38%,#070b14 100%);color:#fff;overflow:hidden;position:relative}
-header:before{content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-180px;top:-120px;box-shadow:0 0 0 70px rgba(255,255,255,.02),0 0 0 140px rgba(255,255,255,.015)}
-.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:60px;align-items:center;position:relative;z-index:1;padding:70px 0}
-.badge{display:inline-flex;gap:8px;align-items:center;padding:8px 13px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);border-radius:999px;font-size:13px;color:#dbeafe} 
-  .badge .dot{color:#22c55e;text-shadow:0 0 8px rgba(34,197,94,.7);font-size:22px;vertical-align:middle}
+/* ==========================================================================
+   НЯМЖАВЫН НАЙДАНДОРЖ — ONLINE CV
+   1) CSS ХЭСЭГ — Бүх загварын код эндээс эхэлнэ
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1.1 ҮНДСЭН ХУВЬСАГЧУУД (CSS variables)
+   Өнгө, дэвсгэр, текстийн өнгийг нэг дороос удирдах зорилготой.
+-------------------------------------------------------------------------- */
+:root{
+  --bg:#f5f7fb;        /* Хуудасны ерөнхий дэвсгэр өнгө */
+  --card:#fff;         /* Карт (блок) -ийн дэвсгэр */
+  --text:#172033;      /* Үндсэн текстийн өнгө */
+  --muted:#657089;     /* Бүдэг (тайлбар) текстийн өнгө */
+  --line:#e7ebf2;      /* Хүрээ, тусгаарлагч шугамын өнгө */
+  --accent:#2563eb;    /* Гол өнгө (цэнхэр) */
+  --accent2:#0ea5e9;   /* Хоёрдогч өнгө (тэнгэрийн цэнхэр) */
+  --dark:#0b1220;      /* Харанхуй дэвсгэр (header, contact) */
+}
+
+/* --------------------------------------------------------------------------
+   1.2 ЕРӨНХИЙ RESET БОЛОН ҮНДСЭН ТОХИРГОО
+-------------------------------------------------------------------------- */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth} /* Цэс дээр дарахад зөөлөн гулсаж очно */
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:auto;padding:0 22px} /* Контентийг голлуулах контейнер */
+
+/* --------------------------------------------------------------------------
+   1.3 HEADER (НҮҮР ХЭСЭГ) — Нэр, зураг, богино танилцуулга
+-------------------------------------------------------------------------- */
+header{
+  min-height:100vh;
+  display:flex;align-items:center;
+  background:radial-gradient(circle at 85% 20%,#1d4ed8 0,#0b1220 38%,#070b14 100%);
+  color:#fff;overflow:hidden;position:relative
+}
+header:before{
+  content:"";position:absolute;width:520px;height:520px;
+  border:1px solid rgba(255,255,255,.08);border-radius:50%;
+  right:-180px;top:-120px;
+  box-shadow:0 0 0 70px rgba(255,255,255,.02),0 0 0 140px rgba(255,255,255,.015)
+}
+.hero{
+  display:grid;grid-template-columns:1.25fr .75fr;gap:60px;align-items:center;
+  position:relative;z-index:1;padding:70px 0
+}
+.badge{
+  display:inline-flex;gap:8px;align-items:center;padding:8px 13px;
+  border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);
+  border-radius:999px;font-size:13px;color:#dbeafe
+}
+.badge .dot{color:#22c55e;text-shadow:0 0 8px rgba(34,197,94,.7);font-size:22px;vertical-align:middle}
 h1{font-size:clamp(42px,7vw,76px);line-height:1.02;letter-spacing:-3px;margin:18px 0 18px}
 .hero h2{font-size:clamp(18px,2.2vw,25px);font-weight:500;color:#cbd5e1;margin:0 0 24px}
 .hero p{max-width:650px;color:#b9c5d8;font-size:17px}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:12px;font-weight:700;border:1px solid rgba(255,255,255,.18);background:#fff;color:#0b1220}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:12px 18px;border-radius:12px;font-weight:700;
+  border:1px solid rgba(255,255,255,.18);background:#fff;color:#0b1220
+}
 .btn.alt{background:transparent;color:#fff}
-.photo{justify-self:end;width:min(330px,100%);aspect-ratio:4/5;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.18);box-shadow:0 25px 80px rgba(0,0,0,.4);transform:rotate(2deg)}
+.photo{
+  justify-self:end;width:min(330px,100%);aspect-ratio:4/5;
+  border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 25px 80px rgba(0,0,0,.4);transform:rotate(2deg)
+}
 .photo img{width:100%;height:100%;object-fit:cover}
-nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+
+/* --------------------------------------------------------------------------
+   1.4 NAVIGATION (ЦЭС) — Хуудасны толгойд наалдсан навигаци
+-------------------------------------------------------------------------- */
+nav{
+  position:sticky;top:0;z-index:10;
+  background:rgba(255,255,255,.9);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line)
+}
 .navin{display:flex;justify-content:space-between;align-items:center;min-height:62px}
-.logo{font-weight:900;background:linear-gradient(90deg,#2563eb,#0ea5e9);-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo{
+  font-weight:900;
+  background:linear-gradient(90deg,#2563eb,#0ea5e9);
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
 .links{display:flex;gap:22px;font-size:14px;color:var(--muted)}
-  
-section{padding:80px 0}.section-title{font-size:34px;letter-spacing:-1px;margin:0 0 10px}.section-sub{color:var(--muted);margin:0 0 34px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:0 10px 35px rgba(15,23,42,.04)}
-.card h3{margin:0 0 5px;font-size:20px}.meta{color:var(--accent);font-weight:700;font-size:14px}.muted{color:var(--muted)}
-.timeline{position:relative;padding-left:28px}.timeline:before{content:"";position:absolute;left:5px;top:4px;bottom:4px;width:2px;background:var(--line)}.item{position:relative;margin-bottom:28px}.item:before{content:"";position:absolute;left:-28px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--bg)}
-.tags{display:flex;flex-wrap:wrap;gap:9px}.tag{padding:9px 12px;border-radius:10px;background:#eef4ff;color:#1e40af;font-weight:700;font-size:14px}
-.contact{background:var(--dark);color:#fff;border-radius:28px;padding:42px}.contact .muted{color:#aebbd0}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:25px}.contact a{display:block;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);padding:15px;border-radius:13px}
+
+/* --------------------------------------------------------------------------
+   1.5 ЕРӨНХИЙ SECTION БОЛОН CARD ЗАГВАР
+-------------------------------------------------------------------------- */
+section{padding:80px 0}
+.section-title{font-size:34px;letter-spacing:-1px;margin:0 0 10px}
+.section-sub{color:var(--muted);margin:0 0 34px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:20px;padding:26px;box-shadow:0 10px 35px rgba(15,23,42,.04)
+}
+.card h3{margin:0 0 5px;font-size:20px}
+.meta{color:var(--accent);font-weight:700;font-size:14px}
+.muted{color:var(--muted)}
+
+/* --------------------------------------------------------------------------
+   1.6 TIMELINE — Ажлын туршлагын он дараалсан жагсаалт
+-------------------------------------------------------------------------- */
+.timeline{position:relative;padding-left:28px}
+.timeline:before{
+  content:"";position:absolute;left:5px;top:4px;bottom:4px;width:2px;background:var(--line)
+}
+.item{position:relative;margin-bottom:28px}
+.item:before{
+  content:"";position:absolute;left:-28px;top:7px;width:12px;height:12px;
+  border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--bg)
+}
+
+/* --------------------------------------------------------------------------
+   1.7 TAGS — Ур чадвар, хобби зэргийг харуулах жижиг шошго (badge)
+-------------------------------------------------------------------------- */
+.tags{display:flex;flex-wrap:wrap;gap:9px}
+.tag{padding:9px 12px;border-radius:10px;background:#eef4ff;color:#1e40af;font-weight:700;font-size:14px}
+
+/* --------------------------------------------------------------------------
+   1.8 CONTACT (ХОЛБОО БАРИХ) ХЭСЭГ
+-------------------------------------------------------------------------- */
+.contact{background:var(--dark);color:#fff;border-radius:28px;padding:42px}
+.contact .muted{color:#aebbd0}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:25px}
+.contact a{
+  display:block;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);padding:15px;border-radius:13px
+}
+
+/* --------------------------------------------------------------------------
+   1.9 FOOTER
+-------------------------------------------------------------------------- */
 footer{padding:35px 0;color:var(--muted);text-align:center;font-size:13px}
+
+/* --------------------------------------------------------------------------
+   1.10 RESPONSIVE — Жижиг дэлгэц (гар утас, таблет)-д зориулсан тохиргоо
+-------------------------------------------------------------------------- */
 @media(max-width:800px){
   .hero{grid-template-columns:1fr;gap:25px}
   .photo{justify-self:start;width:240px}
@@ -44,9 +162,28 @@ footer{padding:35px 0;color:var(--muted);text-align:center;font-size:13px}
   section{padding:30px 0}
   h1{letter-spacing:-2px}
 }
-  @media print{nav,.actions,footer{display:none}header{min-height:auto;background:#fff;color:#111}.hero{padding:30px 0}.hero p,.hero h2{color:#333}.photo{box-shadow:none}.card{box-shadow:none}}
 
-/* Cinematic intro video */
+/* --------------------------------------------------------------------------
+   1.11 PRINT — "CV хэвлэх / PDF" товч дарахад ашиглагдах хэвлэлийн загвар
+-------------------------------------------------------------------------- */
+@media print{
+  nav,.actions,footer{display:none}
+  header{min-height:auto;background:#fff;color:#111}
+  .hero{padding:30px 0}
+  .hero p,.hero h2{color:#333}
+  .photo{box-shadow:none}
+  .card{box-shadow:none}
+}
+
+/* --------------------------------------------------------------------------
+   1.12 НАМТАР (BIOGRAPHY) ХЭСГИЙН ТЕКСТ
+-------------------------------------------------------------------------- */
+.biography-text p{font-size:17px;margin:0 0 18px}
+.biography-text p:last-child{margin-bottom:0}
+
+/* --------------------------------------------------------------------------
+   1.13 НЭЭЛТИЙН (INTRO) ВИДЕО — Хуудас ачаалахад гарах кино мэт танилцуулга
+-------------------------------------------------------------------------- */
 #introVideo{
   position:fixed;inset:0;z-index:9999;background:#05070c;
   display:flex;align-items:center;justify-content:center;
@@ -110,12 +247,24 @@ body.intro-lock{overflow:hidden}
   #introVideo,#introVideo video,#cvPage{animation:none!important;transition:none!important}
 }
 
-.biography-text p{font-size:17px;margin:0 0 18px}.biography-text p:last-child{margin-bottom:0}
+/* --------------------------------------------------------------------------
+   1.14 НЭМЭЛТ ЖИЖИГ ТОХИРГОО (intro player, гар утасны хэмжээ)
+-------------------------------------------------------------------------- */
 #introPlayer{object-fit:contain!important;background:#05070c}
-@media(max-width:600px){#introPlayer{object-fit:contain!important}.introBtn{padding:9px 12px;font-size:12px}.section-title{font-size:29px}}
+@media(max-width:600px){
+  #introPlayer{object-fit:contain!important}
+  .introBtn{padding:9px 12px;font-size:12px}
+  .section-title{font-size:29px}
+}
 </style>
 </head>
 <body>
+
+<!-- ==========================================================================
+     2) HTML ХЭСЭГ — Хуудасны бодит агуулга эндээс эхэлнэ
+     ========================================================================== -->
+
+<!-- 2.1 НЭЭЛТИЙН (INTRO) ВИДЕО ДАВХАРГА -->
 <div id="introVideo" aria-label="Нүүр хуудасны танилцуулга видео">
   <video id="introPlayer" autoplay muted playsinline preload="auto">
     <source src="intro.mp4" type="video/mp4">
@@ -124,135 +273,215 @@ body.intro-lock{overflow:hidden}
   <button id="unmuteBtn" type="button">🔇 Дуу асаах</button>
   <button id="skipIntro" type="button">Алгасах →</button>
 </div>
-  
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const overlay=document.getElementById('introVideo');
-  const video=document.getElementById('introPlayer');
-  const skip=document.getElementById('skipIntro');
-  const unmuteBtn=document.getElementById('unmuteBtn');
-  const cv=document.getElementById('cvPage');
-  const progress=document.getElementById('introProgress');
-  let closed=false;
 
+<!-- 2.2 ЖИНХЭНЭ CV ХУУДАС — intro видео дууссаны дараа харагдана -->
+<div id="cvPage">
+
+  <!-- 2.2.1 HEADER: Нэр, товч танилцуулга, зураг -->
+  <header id="top">
+    <div class="wrap hero">
+      <div>
+        <span class="badge"><span class="dot">•</span> ONLINE CV & PORTFOLIO</span>
+
+        <h1>Нямжавын<br>Найдандорж</h1>
+        <h2>Software Development · Hardware · Digital Projects · Heavy Truck Driver</h2>
+        <p>Техник, компьютер, программ хангамж болон дижитал технологийн чиглэлээр туршлагатай. Шинэ технологи, веб хөгжүүлэлт, автоматжуулалт болон практик техникийн ажлыг сонирхон ажилладаг. Мөн ВСДЕ ангилалтай, СЕ мэргэшсэн жолооч.</p>
+        <div class="actions">
+          <a class="btn" href="#contact">Холбоо барих</a>
+          <a class="btn alt" href="javascript:window.print()">CV хэвлэх / PDF</a>
+        </div>
+      </div>
+      <div class="photo"><img src="profile.jpg" alt="Нямжавын Найдандорж"></div>
+    </div>
+  </header>
+
+  <!-- 2.2.2 NAVIGATION: Хуудасны толгойд наалдсан цэс -->
+  <nav>
+    <div class="wrap navin">
+      <a class="logo" href="#top">NN.</a>
+      <div class="links">
+        <a href="#biography">Намтар</a>
+        <a href="#about">Тухай</a>
+        <a href="#career">Ажил</a>
+        <a href="#experience">Туршлага</a>
+        <a href="#education">Боловсрол</a>
+        <a href="#skills">Ур чадвар</a>
+        <a href="#projects">Төслүүд</a>
+        <a href="#hobbies">Хобби</a>
+        <a href="#contact">Холбоо</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- 2.2.3 НАМТАР -->
+    <section id="biography">
+      <div class="wrap">
+        <h2 class="section-title">Миний намтар</h2>
+        <p class="section-sub">Боловсрол, зан чанар, ажил амьдралын замнал</p>
+        <div class="card biography-text">
+          <p>Намайг <strong>Нямжавын Найдандорж</strong> гэдэг. Би Хөвсгөл аймгийн Цэцэрлэг суманд төрсөн. 2009 оны 5-р сарын 30-нд Орхон аймгийн Баян-Өндөр сумын 2-р арван жилийн сургуулийг А.Долгорсүрэн багштай 11-А ангийг төгссөн.</p>
+          <p>Сурагч ахуй наснаасаа сургуулиа төлөөлөн аймгийн тэмцээнүүдэд амжилттай оролцож байсан. Хувийн зан араншингийн хувьд төлөв түвшин, аливаа зүйлд өөрийн үнэлэлт дүгнэлтийг өгч чаддаг, анги хамт олныхоо дунд төдийгүй цаашид ажил албанд удирдан зохион байгуулах чадвартай.</p>
+          <p>Хариуцсан ажил, үүрэг, даалгавартаа эзэн болж хариуцлага хүлээх чадвартай, нийтэч, нийгмийн идэвх оролцоо сайн, үнэнч шударга, даруу төлөв зантай.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2.2.4 "Тухай" хэсэг — эх кодод коммент болгосон тул идэвхгүй хэвээр үлдээв -->
+    <!--
+    <section id="about"><div class="wrap">
+    <h2 class="section-title">Миний тухай</h2><p class="section-sub">Техник ба технологийг хослуулсан туршлага.</p>
+    <div class="grid">
+    <div class="card"><span class="meta">PROFILE</span><h3>Товч танилцуулга</h3><p class="muted">Математик–программ хангамжийн мэргэжилтэй. Hardware, software, веб технологи, график дизайн болон практик техникийн ажлын туршлагатай.</p></div>
+    <div class="card"><span class="meta">LOCATION</span><h3>Монгол Улс</h3><p class="muted">Сэлэнгэ аймаг, Мандал сум / Зүүнхараа орчим.</p></div>
+    </div>
+    </div></section>
+    -->
+
+    <!-- 2.2.5 БОЛОВСРОЛ -->
+    <section id="education">
+      <div class="wrap">
+        <h2 class="section-title">Боловсрол</h2>
+        <p class="section-sub">Сурч эзэмшсэн мэдлэг</p>
+        <div class="card"><span class="meta">1999 — 2002</span><h3>Хөвсгөл аймаг— Цэцэрлэг сум/ 1-р арван жил</h3><p class="muted">Ерөнхий сургуулийн мэдлэг эзэмшсэн.</p></div>
+        <div class="card"><span class="meta">2002 — 2009</span><h3>Орхон аймгийн Баян-Өндөр сумын 2-р арван жил</h3><p class="muted">Ерөнхий сургуулийн мэдлэг эзэмшсэн.</p></div>
+        <div class="card"><span class="meta">2009 — 2013</span><h3>МУИС — Математик / Программ хангамж</h3><p class="muted">Математик болон программ хангамжийн чиглэлээр дээд боловсрол эзэмшсэн.</p></div>
+      </div>
+    </section>
+
+    <!-- 2.2.6 УР ЧАДВАР -->
+    <section id="skills">
+      <div class="wrap">
+        <h2 class="section-title">Ур чадвар</h2>
+        <p class="section-sub">Технологи болон бүтээлч хэрэгслүүд</p>
+        <div class="card">
+          <div class="tags">
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">PHP</span><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">C#</span><span class="tag">Visual Studio</span><span class="tag">WordPress</span><span class="tag">Joomla</span><span class="tag">Photoshop</span><span class="tag">CorelDRAW</span><span class="tag">Microsoft Office</span><span class="tag">GitHub</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2.2.7 АЖИЛ, ХӨДӨЛМӨРИЙН ЗАМНАЛ -->
+    <section id="career">
+      <div class="wrap">
+        <h2 class="section-title">Ажил, хөдөлмөрийн замнал</h2>
+        <p class="section-sub">Ажилласан байгууллага, албан тушаал</p>
+        <div class="card timeline">
+          <div class="item"><span class="meta">2009 — 2013</span><h3>Монгол Улсын Их Сургуулийн харьяа Улаанбаатар сургууль</h3><p class="muted">Суралцаж байх хугацаандаа компьютер техник хангамж чиглэлээр ажил хийж байсан.</p></div>
+          <div class="item"><span class="meta">2013 — 2014</span><h3>Зүүнхараа Хүүхдийн ордон — Биеийн тамир, компьютерийн багш</h3><p class="muted">Зүүнхараа Хүүхдийн ордонд биеийн тамир болон компьютерийн багшаар ажилласан.</p></div>
+          <div class="item"><span class="meta">2015 — 2016</span><h3>Орхон аймгийн Хөдөлмөрийн хэлтэс — Мэргэжилтэн</h3><p class="muted">Хөдөлмөрийн зах зээлийн мэдээ, мэдээлэл болон программ хангамж хариуцсан мэргэжилтнээр гэрээгээр ажилласан.</p></div>
+          <div class="item"><span class="meta">2017 — 2019</span><h3>Дорны Өртөө ХХК — ХДАМЖ</h3><p class="muted">Хүнд даацын автомашины жолоочийн чиглэлээр ажилласан.</p></div>
+          <div class="item"><span class="meta">2020 оны 7-р сар — Одоо</span><h3>Энержи Ресурс ХХК — ХДАМЖ</h3><p class="muted">Хүнд даацын автомашины жолоочийн мэргэжлээр тогтвор суурьшилтай ажиллаж байна.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2.2.8 ТӨСЛҮҮД -->
+    <section id="projects">
+      <div class="wrap">
+        <h2 class="section-title">Төслүүд</h2>
+        <p class="section-sub">Веб болон дижитал хийсэн зүйлс</p>
+        <div class="grid">
+          <div class="card"><span class="meta">WEB</span><h3>Personal Portfolio</h3><p class="muted">Өөрийн веб танилцуулга, CV болон төслүүдийг нэг дор харуулах веб.</p><a class="meta" href="https://naidandorj.github.io/My_new_web/" target="_blank">GitHub Pages →</a></div>
+          <div class="card"><span class="meta">E-COMMERCE</span><h3>Онлайн дэлгүүрийн төсөл</h3><p class="muted">Бэлэн хувцасны дэлгүүрийн веб, бүтээгдэхүүн танилцуулга болон хүргэлтийн мэдээллийн шийдэл.</p><a class="meta" href="https://www.facebook.com/share/19Gd934bKd/" target="_blank">Odko online shop →</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2.2.9 ХОБЬИ -->
+    <section id="hobbies">
+      <div class="wrap">
+        <h2 class="section-title">Авьяас, мэдлэг, гарын дүй, чадвар, хобби</h2>
+        <p class="section-sub">Сонирхдог спорт, оюуны тоглоомууд</p>
+        <div class="card">
+          <div class="tags"><span class="tag">♟ Шатар</span><span class="tag">♟ Даам</span><span class="tag">🏀 Сагсан бөмбөг</span><span class="tag">🏐 Гар бөмбөг</span><span class="tag">🎾 Теннис</span></div>
+          <p class="muted" style="margin-top:20px">Шатар, даам болон сагсан бөмбөг, гар бөмбөг, теннис зэрэг спортуудыг сонирхон тоглодог. Ялангуяа гар бөмбөг болон шатар тоглох дуртай.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2.2.10 ХОЛБОО БАРИХ -->
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact">
+          <h2 class="section-title">Холбоо барих</h2>
+          <p class="muted">Ажил, төсөл болон хамтын ажиллагааны талаар холбогдоорой.</p>
+          <div class="contact-grid">
+            <a href="tel:+97695196569">📞 <strong>95196569</strong><br><span class="muted">Утас</span></a>
+            <a href="https://www.facebook.com/share/19Gd934bKd/" target="_blank">📘 <strong>Facebook</strong><br><span class="muted">Профайл / хуудас</span></a>
+            <a href="https://github.com/naidandorj" target="_blank">💻 <strong>GitHub</strong><br><span class="muted">Projects</span></a>
+            <a href="mailto:your-email@example.com">✉️ <strong>Email</strong><br><span class="muted">Имэйлээр холбогдох</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 2.2.11 FOOTER -->
+  <footer>© 2026 Нямжавын Найдандорж · Online CV</footer>
+
+</div><!-- #cvPage төгсгөл -->
+
+<script>
+/* ==========================================================================
+   3) JAVASCRIPT ХЭСЭГ — Intro видеог удирдах логик
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* 3.1 Шаардлагатай HTML элементүүдийг олж авах */
+  const overlay   = document.getElementById('introVideo');   // Бүх видеог агуулсан давхарга
+  const video     = document.getElementById('introPlayer');  // <video> элемент
+  const skip      = document.getElementById('skipIntro');    // "Алгасах →" товч
+  const unmuteBtn = document.getElementById('unmuteBtn');    // "Дуу асаах" товч
+  const cv        = document.getElementById('cvPage');       // Жинхэнэ CV контент
+  const progress  = document.getElementById('introProgress');// Явцын шугам
+  let closed = false; // Видео аль хэдийн хаагдсан эсэхийг хянах хувьсагч
+
+  /* 3.2 Видео тоглож байх үед хуудсыг гүйлгэхийг хаах */
   document.body.classList.add('intro-lock');
 
+  /* 3.3 Intro видеог хаагаад, CV хуудсыг харуулах функц */
   function revealCV(){
-    if(closed)return;
-    closed=true;
-    progress.style.width='100%';
-    overlay.classList.add('hide');
-    cv.classList.add('ready');
-    document.body.classList.remove('intro-lock');
-    setTimeout(()=>overlay.remove(),1200);
+    if (closed) return;        // Аль хэдийн хаагдсан бол дахин ажиллуулахгүй
+    closed = true;
+
+    progress.style.width = '100%';      // Явцын шугамыг дүүргэх
+    overlay.classList.add('hide');      // Видеог алга болгох CSS анимаци эхлүүлэх
+    cv.classList.add('ready');          // CV хуудсыг харагдах болгох
+    document.body.classList.remove('intro-lock'); // Гүйлгэх боломжийг нээх
+
+    // Анимаци дуусахыг хүлээгээд, видео элементийг DOM-оос бүр мөсөн устгах
+    setTimeout(() => overlay.remove(), 1200);
   }
 
-  video.addEventListener('timeupdate',()=>{
-    if(video.duration && isFinite(video.duration)){
-      progress.style.width=(video.currentTime/video.duration*100)+'%';
+  /* 3.4 Видеоны явцыг (progress bar) шинэчлэх */
+  video.addEventListener('timeupdate', () => {
+    if (video.duration && isFinite(video.duration)) {
+      progress.style.width = (video.currentTime / video.duration * 100) + '%';
     }
   });
 
-  video.addEventListener('ended',revealCV);
-  video.addEventListener('error',revealCV);
-  skip.addEventListener('click',revealCV);
-  unmuteBtn.addEventListener('click',()=>{
-  video.muted=false;
-  video.volume=1;
-  unmuteBtn.style.display='none';
-});
+  /* 3.5 Видео дуусах, эсвэл алдаа гарах үед CV хуудас руу шилжих */
+  video.addEventListener('ended', revealCV);
+  video.addEventListener('error', revealCV);
 
-  // Some mobile browsers block autoplay until play() is requested.
-  video.play().catch(()=>{});
+  /* 3.6 "Алгасах →" товч дарахад шууд CV хуудас руу шилжих */
+  skip.addEventListener('click', revealCV);
+
+  /* 3.7 "Дуу асаах" товч дарахад видеоны дууг нээх */
+  unmuteBtn.addEventListener('click', () => {
+    video.muted = false;
+    video.volume = 1;
+    unmuteBtn.style.display = 'none'; // Дуу нээгдсэний дараа товчийг нуух
+  });
+
+  /* 3.8 Зарим гар утасны хөтөч автомат тоглуулахыг хориглодог тул
+        play()-г шууд дуудаж, амжилтгүй бол алдааг үл тоомсорлох */
+  video.play().catch(() => {});
 });
 </script>
-  
-<div id="cvPage">
-<header id="top">
-<div class="wrap hero">
-<div>
-<span class="badge"><span class="dot">•</span> ONLINE CV & PORTFOLIO</span>
-  
-<h1>Нямжавын<br>Найдандорж</h1>
-<h2>Software Development · Hardware · Digital Projects · Heavy Truck Driver</h2>
-<p>Техник, компьютер, программ хангамж болон дижитал технологийн чиглэлээр туршлагатай. Шинэ технологи, веб хөгжүүлэлт, автоматжуулалт болон практик техникийн ажлыг сонирхон ажилладаг. Мөн ВСДЕ ангилалтай, СЕ мэргэшсэн жолооч.</p>
-<div class="actions">
-<a class="btn" href="#contact">Холбоо барих</a>
-<a class="btn alt" href="javascript:window.print()">CV хэвлэх / PDF</a>
-</div>
-</div>
-<div class="photo"><img src="profile.jpg" alt="Нямжавын Найдандорж"></div>
-</div>
-</header>
-
-<nav><div class="wrap navin"><a class="logo" href="#top">NN.</a><div class="links"><a href="#biography">Намтар</a><a href="#about">Тухай</a><a href="#career">Ажил</a><a href="#experience">Туршлага</a><a href="#education">Боловсрол</a><a href="#skills">Ур чадвар</a><a href="#projects">Төслүүд</a><a href="#hobbies">Хобби</a><a href="#contact">Холбоо</a></div></div></nav>
-
-<main>
-<section id="biography"><div class="wrap">
-<h2 class="section-title">Миний намтар</h2><p class="section-sub">Боловсрол, зан чанар, ажил амьдралын замнал</p>
-<div class="card biography-text">
-<p>Намайг <strong>Нямжавын Найдандорж</strong> гэдэг. Би Хөвсгөл аймгийн Цэцэрлэг суманд төрсөн. 2009 оны 5-р сарын 30-нд Орхон аймгийн Баян-Өндөр сумын 2-р арван жилийн сургуулийг А.Долгорсүрэн багштай 11-А ангийг төгссөн.</p>
-<p>Сурагч ахуй наснаасаа сургуулиа төлөөлөн аймгийн тэмцээнүүдэд амжилттай оролцож байсан. Хувийн зан араншингийн хувьд төлөв түвшин, аливаа зүйлд өөрийн үнэлэлт дүгнэлтийг өгч чаддаг, анги хамт олныхоо дунд төдийгүй цаашид ажил албанд удирдан зохион байгуулах чадвартай.</p>
-<p>Хариуцсан ажил, үүрэг, даалгавартаа эзэн болж хариуцлага хүлээх чадвартай, нийтэч, нийгмийн идэвх оролцоо сайн, үнэнч шударга, даруу төлөв зантай.</p>
-</div></div></section>
-  
-<!--
-<section id="about"><div class="wrap">
-<h2 class="section-title">Миний тухай</h2><p class="section-sub">Техник ба технологийг хослуулсан туршлага.</p>
-<div class="grid">
-<div class="card"><span class="meta">PROFILE</span><h3>Товч танилцуулга</h3><p class="muted">Математик–программ хангамжийн мэргэжилтэй. Hardware, software, веб технологи, график дизайн болон практик техникийн ажлын туршлагатай.</p></div>
-<div class="card"><span class="meta">LOCATION</span><h3>Монгол Улс</h3><p class="muted">Сэлэнгэ аймаг, Мандал сум / Зүүнхараа орчим.</p></div>
-</div>
-</div></section>
--->
-  
-<section id="education"><div class="wrap">
-<h2 class="section-title">Боловсрол</h2><p class="section-sub">Сурч эзэмшсэн мэдлэг</p>
-<div class="card"><span class="meta">1999 — 2002</span><h3>Хөвсгөл аймаг— Цэцэрлэг сум/ 1-р арван жил</h3><p class="muted">Ерөнхий сургуулийн мэдлэг эзэмшсэн.</p></div>
-<div class="card"><span class="meta">2002 — 2009</span><h3>Орхон аймгийн Баян-Өндөр сумын 2-р арван жил</h3><p class="muted">Ерөнхий сургуулийн мэдлэг эзэмшсэн.</p></div>
-<div class="card"><span class="meta">2009 — 2013</span><h3>МУИС — Математик / Программ хангамж</h3><p class="muted">Математик болон программ хангамжийн чиглэлээр дээд боловсрол эзэмшсэн.</p></div>
-</div></section>
-
-<section id="skills"><div class="wrap">
-<h2 class="section-title">Ур чадвар</h2><p class="section-sub">Технологи болон бүтээлч хэрэгслүүд</p>
-<div class="card"><div class="tags">
-<span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">PHP</span><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">C#</span><span class="tag">Visual Studio</span><span class="tag">WordPress</span><span class="tag">Joomla</span><span class="tag">Photoshop</span><span class="tag">CorelDRAW</span><span class="tag">Microsoft Office</span><span class="tag">GitHub</span>
-</div></div>
-</div></section>
-
-<section id="career"><div class="wrap">
-<h2 class="section-title">Ажил, хөдөлмөрийн замнал</h2><p class="section-sub">Ажилласан байгууллага, албан тушаал</p>
-<div class="card timeline">
-<div class="item"><span class="meta">2009 — 2013</span><h3>Монгол Улсын Их Сургуулийн харьяа Улаанбаатар сургууль</h3><p class="muted">Суралцаж байх хугацаандаа компьютер техник хангамж чиглэлээр ажил хийж байсан.</p></div>
-<div class="item"><span class="meta">2013 — 2014</span><h3>Зүүнхараа Хүүхдийн ордон — Биеийн тамир, компьютерийн багш</h3><p class="muted">Зүүнхараа Хүүхдийн ордонд биеийн тамир болон компьютерийн багшаар ажилласан.</p></div>
-<div class="item"><span class="meta">2015 — 2016</span><h3>Орхон аймгийн Хөдөлмөрийн хэлтэс — Мэргэжилтэн</h3><p class="muted">Хөдөлмөрийн зах зээлийн мэдээ, мэдээлэл болон программ хангамж хариуцсан мэргэжилтнээр гэрээгээр ажилласан.</p></div>
-<div class="item"><span class="meta">2017 — 2019</span><h3>Дорны Өртөө ХХК — ХДАМЖ</h3><p class="muted">Хүнд даацын автомашины жолоочийн чиглэлээр ажилласан.</p></div>
-<div class="item"><span class="meta">2020 оны 7-р сар — Одоо</span><h3>Энержи Ресурс ХХК — ХДАМЖ</h3><p class="muted">Хүнд даацын автомашины жолоочийн мэргэжлээр тогтвор суурьшилтай ажиллаж байна.</p></div>
-</div></div></section>
-
-<section id="projects"><div class="wrap">
-<h2 class="section-title">Төслүүд</h2><p class="section-sub">Веб болон дижитал хийсэн зүйлс</p>
-<div class="grid">
-<div class="card"><span class="meta">WEB</span><h3>Personal Portfolio</h3><p class="muted">Өөрийн веб танилцуулга, CV болон төслүүдийг нэг дор харуулах веб.</p><a class="meta" href="https://naidandorj.github.io/My_new_web/" target="_blank">GitHub Pages →</a></div>
-<div class="card"><span class="meta">E-COMMERCE</span><h3>Онлайн дэлгүүрийн төсөл</h3><p class="muted">Бэлэн хувцасны дэлгүүрийн веб, бүтээгдэхүүн танилцуулга болон хүргэлтийн мэдээллийн шийдэл.</p><a class="meta" href="https://www.facebook.com/share/19Gd934bKd/" target="_blank">Odko online shop →</a></div>
-</div>
-</div></section>
-
-<section id="hobbies"><div class="wrap">
-<h2 class="section-title">Авьяас, мэдлэг, гарын дүй, чадвар, хобби</h2><p class="section-sub">Сонирхдог спорт, оюуны тоглоомууд</p>
-<div class="card"><div class="tags"><span class="tag">♟ Шатар</span><span class="tag">♟ Даам</span><span class="tag">🏀 Сагсан бөмбөг</span><span class="tag">🏐 Гар бөмбөг</span><span class="tag">🎾 Теннис</span></div><p class="muted" style="margin-top:20px">Шатар, даам болон сагсан бөмбөг, гар бөмбөг, теннис зэрэг спортуудыг сонирхон тоглодог. Ялангуяа гар бөмбөг болон шатар тоглох дуртай.</p></div></div></section>
-
-<section id="contact"><div class="wrap"><div class="contact">
-<h2 class="section-title">Холбоо барих</h2><p class="muted">Ажил, төсөл болон хамтын ажиллагааны талаар холбогдоорой.</p>
-<div class="contact-grid">
-<a href="tel:+97695196569">📞 <strong>95196569</strong><br><span class="muted">Утас</span></a>
-<a href="https://www.facebook.com/share/19Gd934bKd/" target="_blank">📘 <strong>Facebook</strong><br><span class="muted">Профайл / хуудас</span></a>
-<a href="https://github.com/naidandorj" target="_blank">💻 <strong>GitHub</strong><br><span class="muted">Projects</span></a>
-<a href="mailto:your-email@example.com">✉️ <strong>Email</strong><br><span class="muted">Имэйлээр холбогдох</span></a>
-</div>
-</div></div></section>
-</main>
-<footer>© 2026 Нямжавын Найдандорж · Online CV</footer>
-</div>
 </body>
 </html>
