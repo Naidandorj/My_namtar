@@ -85,6 +85,13 @@ footer{padding:35px 0;color:var(--muted);text-align:center;font-size:13px}
   transition:background .2s,transform .2s;
 }
 #skipIntro:hover{background:rgba(255,255,255,.16);transform:translateY(-2px)}
+#unmuteBtn{
+  position:absolute;left:24px;bottom:24px;z-index:3;
+  border:1px solid rgba(255,255,255,.3);
+  background:rgba(5,10,20,.42);backdrop-filter:blur(14px);
+  color:#fff;border-radius:999px;padding:11px 18px;
+  font-weight:700;cursor:pointer;
+}
 #introProgress{
   position:absolute;left:0;bottom:0;height:3px;width:0%;
   z-index:4;background:rgba(255,255,255,.9);
@@ -114,6 +121,7 @@ body.intro-lock{overflow:hidden}
     <source src="intro.mp4" type="video/mp4">
   </video>
   <div id="introProgress"></div>
+  <button id="unmuteBtn" type="button">🔇 Дуу асаах</button>
   <button id="skipIntro" type="button">Алгасах →</button>
 </div>
   
@@ -122,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const overlay=document.getElementById('introVideo');
   const video=document.getElementById('introPlayer');
   const skip=document.getElementById('skipIntro');
+  const unmuteBtn=document.getElementById('unmuteBtn');
   const cv=document.getElementById('cvPage');
   const progress=document.getElementById('introProgress');
   let closed=false;
@@ -147,6 +156,11 @@ document.addEventListener('DOMContentLoaded', function () {
   video.addEventListener('ended',revealCV);
   video.addEventListener('error',revealCV);
   skip.addEventListener('click',revealCV);
+  unmuteBtn.addEventListener('click',()=>{
+  video.muted=false;
+  video.volume=1;
+  unmuteBtn.style.display='none';
+});
 
   // Some mobile browsers block autoplay until play() is requested.
   video.play().catch(()=>{});
