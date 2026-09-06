@@ -12,7 +12,7 @@
 body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
 a{color:inherit;text-decoration:none}.wrap{max-width:1080px;margin:auto;padding:0 22px}
 header{min-height:100vh;display:flex;align-items:center;background:radial-gradient(circle at 85% 20%,#1d4ed8 0,#0b1220 38%,#070b14 100%);color:#fff;overflow:hidden;position:relative}
-header:before{content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-180px;top:-120px;box-shadow:0 0 0 70px rgba(255,255,255,.02),0 0 0 140px rgba(255,255,255,.015)}
+header:before{content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-180px;top:-120px;box-shadow:0 0 0 70px rgba(255,255,255,.02),0 0 0 1[...]
 .hero{display:grid;grid-template-columns:1.25fr .75fr;gap:60px;align-items:center;position:relative;z-index:1;padding:70px 0}
 .badge{display:inline-flex;gap:8px;align-items:center;padding:8px 13px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);border-radius:999px;font-size:13px;color:#dbeafe} 
   .badge .dot{color:#22c55e;text-shadow:0 0 8px rgba(34,197,94,.7);font-size:22px;vertical-align:middle}
@@ -32,9 +32,9 @@ nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.9);backdrop-fi
 section{padding:80px 0}.section-title{font-size:34px;letter-spacing:-1px;margin:0 0 10px}.section-sub{color:var(--muted);margin:0 0 34px}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:0 10px 35px rgba(15,23,42,.04)}
 .card h3{margin:0 0 5px;font-size:20px}.meta{color:var(--accent);font-weight:700;font-size:14px}.muted{color:var(--muted)}
-.timeline{position:relative;padding-left:28px}.timeline:before{content:"";position:absolute;left:5px;top:4px;bottom:4px;width:2px;background:var(--line)}.item{position:relative;margin-bottom:28px}.item:before{content:"";position:absolute;left:-28px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--bg)}
+.timeline{position:relative;padding-left:28px}.timeline:before{content:"";position:absolute;left:5px;top:4px;bottom:4px;width:2px;background:var(--line)}.item{position:relative;margin-bottom:28px}[
 .tags{display:flex;flex-wrap:wrap;gap:9px}.tag{padding:9px 12px;border-radius:10px;background:#eef4ff;color:#1e40af;font-weight:700;font-size:14px}
-.contact{background:var(--dark);color:#fff;border-radius:28px;padding:42px}.contact .muted{color:#aebbd0}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:25px}.contact a{display:block;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);padding:15px;border-radius:13px}
+.contact{background:var(--dark);color:#fff;border-radius:28px;padding:42px}.contact .muted{color:#aebbd0}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:25px}.contact [...]
 footer{padding:35px 0;color:var(--muted);text-align:center;font-size:13px}
 @media(max-width:800px){
   .hero{grid-template-columns:1fr;gap:25px}
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
 <h1>Нямжавын<br>Найдандорж</h1>
 <h2>Software Development · Hardware · Digital Projects · Heavy Truck Driver</h2>
-<p>Техник, компьютер, программ хангамж болон дижитал технологийн чиглэлээр туршлагатай. Шинэ технологи, веб хөгжүүлэлт, автоматжуулалт болон практик техникийн ажлыг сонирхон ажилладаг.</p>
+<p>Техник, компьютер, программ хангамж болон дижитал технологийн чиглэлээр туршлагатай. Шинэ технологи, ве�[...]
 <div class="actions">
 <a class="btn" href="#contact">Холбоо барих</a>
 <a class="btn alt" href="javascript:window.print()">CV хэвлэх / PDF</a>
@@ -171,67 +171,62 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 </header>
 
-<nav><div class="wrap navin"><a class="logo" href="#top">NN.</a><div class="links"><a href="#biography">Намтар</a><a href="#about">Тухай</a><a href="#career">Ажил</a><a href="#experience">Туршлага</a><a href="#education">Боловсрол</a><a href="#skills">Ур чадвар</a><a href="#projects">Төслүүд</a><a href="#hobbies">Хобби</a><a href="#contact">Холбоо</a></div></div></nav>
+<nav><div class="wrap navin"><a class="logo" href="#top">NN.</a><div class="links"><a href="#biography">Намтар</a><a href="#about">Тухай</a><a href="#career">Ажил</a><a href="#expe[...]
 
 <main>
 <section id="biography"><div class="wrap">
 <h2 class="section-title">Миний намтар</h2><p class="section-sub">Боловсрол, зан чанар, ажил амьдралын замнал</p>
 <div class="card biography-text">
-<p>Намайг <strong>Нямжавын Найдандорж</strong> гэдэг. Би Хөвсгөл аймгийн Цэцэрлэг суманд төрсөн. 1999 онд тус сургуулийн 10 жилийн сургуульд орж, 2002 онд Орхон аймгийн Баян-Өндөр сумын 2-р арван жилд шилжин ирж суралцан, 2009 оны 5-р сарын 30-нд тус сургуулийг А.Долгорсүрэн багштай 11-А ангийг төгссөн.</p>
-<p>Сурагч ахуй наснаасаа сургуулиа төлөөлөн аймгийн тэмцээнүүдэд амжилттай оролцож байсан. Хувийн зан араншингийн хувьд төлөв түвшин, аливаа зүйлд өөрийн үнэлэлт дүгнэлтийг өгч чаддаг, анги хамт олныхоо дунд төдийгүй цаашид ажил албанд удирдан зохион байгуулах чадвартай.</p>
-<p>Хариуцсан ажил, үүрэг, даалгавартаа эзэн болж хариуцлага хүлээх чадвартай, нийтэч, нийгмийн идэвх оролцоо сайн, үнэнч шударга, даруу төлөв зантай.</p>
+<p>Намайг <strong>Нямжавын Найдандорж</strong> гэдэг. Би Хөвсгөл аймгийн Цэцэрлэг суманд төрсөн. 1999 онд тус сургуул[...]
+<p>Сурагч ахуй наснаасаа сургуулиа төлөөлөн аймгийн тэмцээнүүдэд амжилттай оролцож байсан. Хувийн зан ара�[...]
+<p>Хариуцсан ажил, үүрэг, даалгавартаа эзэн болж хариуцлага хүлээх чадвартай, нийтэч, нийгмийн идэвх оролцо[...]
 </div></div></section>
 
 <section id="about"><div class="wrap">
 <h2 class="section-title">Миний тухай</h2><p class="section-sub">Техник ба технологийг хослуулсан туршлага.</p>
 <div class="grid">
-<div class="card"><span class="meta">PROFILE</span><h3>Товч танилцуулга</h3><p class="muted">Математик–программ хангамжийн мэргэжилтэй. Hardware, software, веб технологи, график дизайн болон практик техникийн ажлын туршлагатай.</p></div>
+<div class="card"><span class="meta">PROFILE</span><h3>Товч танилцуулга</h3><p class="muted">Математик–программ хангамжийн мэргэжилтэй. Hard[...]
 <div class="card"><span class="meta">LOCATION</span><h3>Монгол Улс</h3><p class="muted">Сэлэнгэ аймаг, Мандал сум / Зүүнхараа орчим.</p></div>
 </div>
 </div></section>
 
-<section id="experience"><div class="wrap">
-<h2 class="section-title">Ажлын туршлага</h2><p class="section-sub">Ажлын замнал</p>
-<div class="card timeline">
-<div class="item"><span class="meta">2010 — 2012</span><h3>Source Code ХХК — Hardware Engineer</h3><p class="muted">Компьютерийн техник хангамж, засвар үйлчилгээ болон техникийн чиглэлээр ажилласан.</p></div>
-<div class="item"><span class="meta">2013 — 2014</span><h3>Зүүнхараа Хүүхдийн ордон — Багш</h3><p class="muted">Компьютер болон биеийн тамирын хичээл зааж ажилласан.</p></div>
-<div class="item"><span class="meta">Одоо</span><h3>Хүнд даацын автомашины жолооч</h3><p class="muted">Хүнд даацын автомашин, тээвэрлэлтийн чиглэлээр ажиллаж байна.</p></div>
-</div>
-</div></section>
+<!-- Experience section removed as requested by user -->
 
 <section id="education"><div class="wrap">
 <h2 class="section-title">Боловсрол</h2><p class="section-sub">Сурч эзэмшсэн мэдлэг</p>
-<div class="card"><span class="meta">2009 — 2013</span><h3>МУИС — Математик / Программ хангамж</h3><p class="muted">Математик болон программ хангамжийн чиглэлээр дээд боловсрол эзэмшсэн.</p></div>
+<div class="card"><span class="meta">2009 — 2013</span><h3>МУИС — Математик / Программ хангамж</h3><p class="muted">Математик болон программ [...]</p>
+</div>
+<div class="card"><span class="meta">12 жил</span><h3>Суурь боловсрол</h3><p class="muted">Орхон аймгийн Ерөнхий боловсролын 2-р сургууль</p>
 </div></section>
 
 <section id="skills"><div class="wrap">
 <h2 class="section-title">Ур чадвар</h2><p class="section-sub">Технологи болон бүтээлч хэрэгслүүд</p>
 <div class="card"><div class="tags">
-<span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">PHP</span><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">C#</span><span class="tag">Visual Studio</span><span class="tag">WordPress</span><span class="tag">Joomla</span><span class="tag">Photoshop</span><span class="tag">CorelDRAW</span><span class="tag">Microsoft Office</span><span class="tag">GitHub</span>
+<span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">PHP</span><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag[...]</span>
 </div></div>
 </div></section>
 
 <section id="career"><div class="wrap">
 <h2 class="section-title">Ажил, хөдөлмөрийн замнал</h2><p class="section-sub">Ажилласан байгууллага, албан тушаал</p>
 <div class="card timeline">
-<div class="item"><span class="meta">2009 — 2013</span><h3>Монгол Улсын Их Сургуулийн харьяа Улаанбаатар сургууль</h3><p class="muted">Математик, Программ хангамж мэргэжлээр суралцаж төгссөн.</p></div>
-<div class="item"><span class="meta">2013 — 2014</span><h3>Зүүнхараа Хүүхдийн ордон — Биеийн тамир, компьютерийн багш</h3><p class="muted">Зүүнхараа Хүүхдийн ордонд биеийн тамир болон компьютерийн багшаар ажилласан.</p></div>
-<div class="item"><span class="meta">2015 — 2016</span><h3>Орхон аймгийн Хөдөлмөрийн хэлтэс — Мэргэжилтэн</h3><p class="muted">Хөдөлмөрийн зах зээлийн мэдээ, мэдээлэл болон программ хангамж хариуцсан мэргэжилтнээр гэрээгээр ажилласан.</p></div>
-<div class="item"><span class="meta">2017 — 2019</span><h3>Дорны Өртөө ХХК — ХДАМЖ</h3><p class="muted">Хүнд даацын автомашины жолоочийн чиглэлээр ажилласан.</p></div>
-<div class="item"><span class="meta">2020 оны 7-р сар — Одоо</span><h3>Энержи Ресурс ХХК — ХДАМЖ</h3><p class="muted">Хүнд даацын автомашины жолоочийн мэргэжлээр тогтвор суурьшилтай ажиллаж байна.</p></div>
+<div class="item"><span class="meta">2009 — 2013</span><h3>Монгол Улсын Их Сургуулийн харьяа Улаанбаатар сургууль</h3><p class="muted">Матем[...]
+<div class="item"><span class="meta">2013 — 2014</span><h3>Зүүнхараа Хүүхдийн ордон — Биеийн тамир, компьютерийн багш</h3><p class="muted">З�[...]
+<div class="item"><span class="meta">2015 — 2016</span><h3>Орхон аймгийн Хөдөлмөрийн хэлтэс — Мэргэжилтэн</h3><p class="muted">Хөдөлмөрийн �[...]
+<div class="item"><span class="meta">2017 — 2019</span><h3>Дорны Өртөө ХХК — ХДАМЖ</h3><p class="muted">Хүнд даацын автомашины жолоочийн чиг�[...]
+<div class="item"><span class="meta">2020 оны 7-р сар — Одоо</span><h3>Энержи Ресурс ХХК — ХДАМЖ</h3><p class="muted">Хүнд даацын автомашины[...]
 </div></div></section>
 
 <section id="projects"><div class="wrap">
 <h2 class="section-title">Төслүүд</h2><p class="section-sub">Веб болон дижитал төслүүд</p>
 <div class="grid">
-<div class="card"><span class="meta">WEB</span><h3>Personal Portfolio</h3><p class="muted">Өөрийн веб танилцуулга, CV болон төслүүдийг нэг дор харуулах веб.</p><a class="meta" href="https://naidandorj.github.io/My_new_web/" target="_blank">GitHub Pages →</a></div>
-<div class="card"><span class="meta">E-COMMERCE</span><h3>Онлайн дэлгүүрийн төсөл</h3><p class="muted">Бэлэн хувцасны дэлгүүрийн веб, бүтээгдэхүүн танилцуулга болон хүргэлтийн мэдээллийн шийдэл.</p></div>
+<div class="card"><span class="meta">WEB</span><h3>Personal Portfolio</h3><p class="muted">Өөрийн веб танилцуулга, CV болон төслүүдийг нэг дор харуу�[...]
+<div class="card"><span class="meta">E-COMMERCE</span><h3>Онлайн дэлгүүрийн төсөл</h3><p class="muted">Бэлэн хувцасны дэлгүүрийн веб, бүтээгд[...]
 </div>
 </div></section>
 
 <section id="hobbies"><div class="wrap">
 <h2 class="section-title">Авьяас, мэдлэг, гарын дүй, чадвар, хобби</h2><p class="section-sub">Сонирхдог спорт, оюуны тоглоомууд</p>
-<div class="card"><div class="tags"><span class="tag">♟ Шатар</span><span class="tag">♟ Даам</span><span class="tag">🏀 Сагсан бөмбөг</span><span class="tag">🏐 Гар бөмбөг</span><span class="tag">🎾 Теннис</span></div><p class="muted" style="margin-top:20px">Шатар, даам болон сагсан бөмбөг, гар бөмбөг, теннис зэрэг спортуудыг сонирхон тоглодог. Ялангуяа гар бөмбөг болон шатар тоглох дуртай.</p></div></div></section>
+<div class="card"><div class="tags"><span class="tag">♟ Шатар</span><span class="tag">♟ Даам</span><span class="tag">🏀 Сагсан бөмбөг</span><span class="tag">🏐 Га�[...]
 
 <section id="contact"><div class="wrap"><div class="contact">
 <h2 class="section-title">Холбоо барих</h2><p class="muted">Ажил, төсөл болон хамтын ажиллагааны талаар холбогдоорой.</p>
