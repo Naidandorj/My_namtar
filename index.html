@@ -256,6 +256,225 @@ body.intro-lock{overflow:hidden}
   .introBtn{padding:9px 12px;font-size:12px}
   .section-title{font-size:29px}
 }
+   /* =========================
+   AI CHATBOT
+========================= */
+
+.ai-chat-button {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+
+  width: 62px;
+  height: 62px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #111827;
+  color: white;
+
+  font-size: 28px;
+
+  cursor: pointer;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+  z-index: 9999;
+
+  transition: 0.25s;
+}
+
+.ai-chat-button:hover {
+  transform: scale(1.08);
+}
+
+
+/* CHAT WINDOW */
+
+.ai-chat-box {
+  position: fixed;
+
+  right: 25px;
+  bottom: 100px;
+
+  width: 360px;
+  height: 520px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.25);
+
+  overflow: hidden;
+
+  display: none;
+
+  flex-direction: column;
+
+  z-index: 9998;
+
+  font-family:
+    Arial,
+    sans-serif;
+}
+
+
+/* HEADER */
+
+.ai-chat-header {
+  height: 70px;
+
+  background: #111827;
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 20px;
+}
+
+.ai-chat-header strong {
+  display: block;
+
+  font-size: 17px;
+}
+
+.ai-chat-header small {
+  opacity: 0.7;
+
+  font-size: 12px;
+}
+
+#aiCloseButton {
+  background: transparent;
+
+  border: none;
+
+  color: white;
+
+  font-size: 28px;
+
+  cursor: pointer;
+}
+
+
+/* MESSAGES */
+
+.ai-messages {
+  flex: 1;
+
+  padding: 18px;
+
+  overflow-y: auto;
+
+  background: #f5f7fb;
+}
+
+.ai-message {
+  max-width: 85%;
+
+  padding: 12px 15px;
+
+  margin-bottom: 12px;
+
+  border-radius: 15px;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+.ai-bot {
+  background: white;
+
+  color: #1f2937;
+
+  border-bottom-left-radius: 5px;
+}
+
+.ai-user {
+  margin-left: auto;
+
+  background: #111827;
+
+  color: white;
+
+  border-bottom-right-radius: 5px;
+}
+
+
+/* INPUT */
+
+.ai-input-area {
+  display: flex;
+
+  padding: 12px;
+
+  background: white;
+
+  border-top: 1px solid #eee;
+}
+
+#aiInput {
+  flex: 1;
+
+  border: 1px solid #ddd;
+
+  border-radius: 12px;
+
+  padding: 12px;
+
+  outline: none;
+
+  font-size: 14px;
+}
+
+#aiInput:focus {
+  border-color: #111827;
+}
+
+#aiSendButton {
+  width: 45px;
+
+  margin-left: 8px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #111827;
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 18px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .ai-chat-box {
+    right: 10px;
+    bottom: 85px;
+    width: calc(100% - 20px);
+    height: 70vh;
+    max-height: 600px;
+  }
+
+  .ai-chat-button {
+    right: 15px;
+    bottom: 15px;
+  }
+}
 </style>
 </head>
 <body>
@@ -484,6 +703,53 @@ document.addEventListener('DOMContentLoaded', function () {
         play()-г шууд дуудаж, амжилтгүй бол алдааг үл тоомсорлох */
   video.play().catch(() => {});
 });
+
+   <!-- AI CHATBOT -->
+
+<button id="aiChatButton" class="ai-chat-button">
+  🤖
+</button>
+
+<div id="aiChatBox" class="ai-chat-box">
+
+  <div class="ai-chat-header">
+    <div>
+      <strong>AI Туслах</strong>
+      <small>Онлайн</small>
+    </div>
+
+    <button id="aiCloseButton">×</button>
+  </div>
+
+  <div id="aiMessages" class="ai-messages">
+
+    <div class="ai-message ai-bot">
+      Сайн байна уу! 👋
+      <br><br>
+      Би Найдандоржийн веб сайтын AI туслах байна.
+      Надаас CV, ажил, веб хөгжүүлэлт болон бусад зүйлсийн талаар асууж болно.
+    </div>
+
+  </div>
+
+  <div class="ai-input-area">
+
+    <input
+      id="aiInput"
+      type="text"
+      placeholder="Асуултаа бичнэ үү..."
+      autocomplete="off"
+    />
+
+    <button id="aiSendButton">
+      ➤
+    </button>
+
+  </div>
+
+</div>
+
+src="/script.js"
 </script>
 </body>
 </html>
