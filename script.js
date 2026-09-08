@@ -1,203 +1,183 @@
-const aiChatButton =
-  document.getElementById("aiChatButton");
+/* ==========================================================================
+   NAIDAA AI + INTRO VIDEO
+   ========================================================================== */
 
-const aiChatBox =
-  document.getElementById("aiChatBox");
+document.addEventListener("DOMContentLoaded", function () {
 
-const aiCloseButton =
-  document.getElementById("aiCloseButton");
+  /* ------------------------------------------------------------------------
+     NAIDAA AI
+  ------------------------------------------------------------------------ */
+  const fab = document.getElementById("naidaaAiFab");
+  const panel = document.getElementById("naidaaAiPanel");
+  const closeBtn = document.getElementById("naidaaAiClose");
+  const input = document.getElementById("naidaaAiInput");
+  const sendBtn = document.getElementById("naidaaAiSend");
+  const messages = document.getElementById("naidaaAiMessages");
+  const suggestions = document.getElementById("naidaaAiSuggestions");
 
-const aiInput =
-  document.getElementById("aiInput");
+  let conversationHistory = [];
+  let busy = false;
 
-const aiSendButton =
-  document.getElementById("aiSendButton");
+  function openAI() {
+    panel?.classList.add("open");
+    input?.focus();
+  }
 
-const aiMessages =
-  document.getElementById("aiMessages");
+  function closeAI() {
+    panel?.classList.remove("open");
+  }
 
+  function addMessage(text, role) {
+    const row = document.createElement("div");
+    row.className = `naidaa-ai-msg ${role}`;
 
-let conversationHistory = [];
+    const bubble = document.createElement("div");
+    bubble.className = "naidaa-ai-bubble";
+    bubble.textContent = text;
 
+    row.appendChild(bubble);
+    messages.appendChild(row);
+    messages.parentElement.scrollTop = messages.parentElement.scrollHeight;
+    return row;
+  }
 
-/* OPEN CHAT */
+  function addTyping() {
+    const row = document.createElement("div");
+    row.className = "naidaa-ai-msg bot";
+    row.id = "naidaaAiTyping";
 
-aiChatButton.addEventListener("click", () => {
+    const bubble = document.createElement("div");
+    bubble.className = "naidaa-ai-bubble naidaa-ai-typing";
+    bubble.innerHTML = "<b></b><b></b><b></b>";
 
-  aiChatBox.style.display = "flex";
+    row.appendChild(bubble);
+    messages.appendChild(row);
+    messages.parentElement.scrollTop = messages.parentElement.scrollHeight;
+  }
 
-  aiInput.focus();
+  async function sendAIMessage(text) {
+    const message = String(text || "").trim();
+    if (!message || busy) return;
 
-});
+    busy = true;
+    sendBtn.disabled = true;
 
+    addMessage(message, "user");
+    input.value = "";
+    addTyping();
 
-/* CLOSE CHAT */
-
-aiCloseButton.addEventListener("click", () => {
-
-  aiChatBox.style.display = "none";
-
-});
-
-
-/* ADD MESSAGE */
-
-function addMessage(text, type) {
-
-  const message = document.createElement("div");
-
-  message.className =
-    `ai-message ${type}`;
-
-  message.innerHTML =
-    text.replace(/\n/g, "<br>");
-
-  aiMessages.appendChild(message);
-
-  aiMessages.scrollTop =
-    aiMessages.scrollHeight;
-}
-
-
-/* SEND MESSAGE */
-
-async function sendMessage() {
-
-  const message =
-    aiInput.value.trim();
-
-  if (!message) return;
-
-
-  addMessage(message, "ai-user");
-
-  aiInput.value = "";
-
-  aiSendButton.disabled = true;
-
-  const loading =
-    document.createElement("div");
-
-  loading.className =
-    "ai-message ai-bot";
-
-  loading.id = "aiLoading";
-
-  loading.innerHTML =
-    "⏳ Бодож байна...";
-
-  aiMessages.appendChild(loading);
-
-
-  try {
-
-    const response =
-      await fetch("/api/chat", {
-
+    try {
+      const response = await fetch("/api/chat", {
         method: "POST",
-
-        headers: {
-          "Content-Type": "application/json"
-        },
-
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-
-          message: message,
-
+          message,
           history: conversationHistory
-
         })
-
       });
 
+      let data = {};
+      try {
+        data = await response.json();
+      } catch (_) {}
 
-    const data =
-      await response.json();
+      document.getElementById("naidaaAiTyping")?.remove();
 
+      if (!response.ok) {
+        throw new Error(data.error || "AI service error");
+      }
 
-    document
-      .getElementById("aiLoading")
-      ?.remove();
+      const answer = data.answer || "Уучлаарай, хариу олдсонгүй.";
+      addMessage(answer, "bot");
 
+      conversationHistory.push(
+        { role: "user", content: message },
+        { role: "assistant", content: answer }
+      );
+      conversationHistory = conversationHistory.slice(-12);
 
-    if (!response.ok) {
+    } catch (error) {
+      console.error(error);
+      document.getElementById("naidaaAiTyping")?.remove();
 
       addMessage(
-        "⚠️ Уучлаарай, сервертэй холбогдоход алдаа гарлаа.",
-        "ai-bot"
+        "⚠️ Naidaa AI-тэй холбогдоход алдаа гарлаа. Vercel-ийн Environment Variables дээр OPENAI_API_KEY зөв тохируулагдсан эсэхийг шалгана уу.",
+        "bot"
       );
-
-      return;
+    } finally {
+      busy = false;
+      sendBtn.disabled = false;
+      input.focus();
     }
-
-
-    addMessage(
-      data.answer,
-      "ai-bot"
-    );
-
-
-    conversationHistory.push(
-      {
-        role: "user",
-        content: message
-      },
-
-      {
-        role: "assistant",
-        content: data.answer
-      }
-    );
-
-
-    conversationHistory =
-      conversationHistory.slice(-10);
-
-
-  } catch (error) {
-
-    console.error(error);
-
-    document
-      .getElementById("aiLoading")
-      ?.remove();
-
-    addMessage(
-      "⚠️ Интернэт эсвэл серверийн алдаа гарлаа.",
-      "ai-bot"
-    );
-
-  } finally {
-
-    aiSendButton.disabled = false;
-
-    aiInput.focus();
-
   }
-}
 
+  fab?.addEventListener("click", () => {
+    if (panel.classList.contains("open")) closeAI();
+    else openAI();
+  });
 
-/* SEND BUTTON */
+  closeBtn?.addEventListener("click", closeAI);
 
-aiSendButton.addEventListener(
-  "click",
-  sendMessage
-);
+  sendBtn?.addEventListener("click", () => sendAIMessage(input.value));
 
-
-/* ENTER */
-
-aiInput.addEventListener(
-  "keydown",
-  (event) => {
-
+  input?.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
-
       event.preventDefault();
-
-      sendMessage();
-
+      sendAIMessage(input.value);
     }
+  });
 
+  suggestions?.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-question]");
+    if (!button) return;
+    openAI();
+    sendAIMessage(button.dataset.question);
+  });
+
+  /* ------------------------------------------------------------------------
+     INTRO VIDEO
+  ------------------------------------------------------------------------ */
+  const overlay = document.getElementById("introVideo");
+  const video = document.getElementById("introPlayer");
+  const skip = document.getElementById("skipIntro");
+  const unmuteBtn = document.getElementById("unmuteBtn");
+  const cv = document.getElementById("cvPage");
+  const progress = document.getElementById("introProgress");
+
+  if (!overlay || !video || !cv) return;
+
+  document.body.classList.add("intro-lock");
+
+  let closed = false;
+
+  function revealCV() {
+    if (closed) return;
+    closed = true;
+
+    if (progress) progress.style.width = "100%";
+    overlay.classList.add("hide");
+    cv.classList.add("ready");
+    document.body.classList.remove("intro-lock");
+
+    setTimeout(() => overlay.remove(), 1200);
   }
-);
+
+  video.addEventListener("timeupdate", () => {
+    if (video.duration && isFinite(video.duration) && progress) {
+      progress.style.width =
+        (video.currentTime / video.duration * 100) + "%";
+    }
+  });
+
+  video.addEventListener("ended", revealCV);
+  video.addEventListener("error", revealCV);
+  skip?.addEventListener("click", revealCV);
+
+  unmuteBtn?.addEventListener("click", () => {
+    video.muted = false;
+    video.volume = 1;
+    unmuteBtn.style.display = "none";
+  });
+
+  video.play().catch(() => {});
+});
