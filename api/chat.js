@@ -12,7 +12,7 @@ export default async function handler(req, res) {
         error: "Серверийн тохиргоо дутуу байна. OPENAI_API_KEY тохируулагдаагүй байна."
       });
     }
-
+console.log("KEY LOADED:", apiKey ? apiKey.slice(0, 7) + "..." : "MISSING"); 
     const { message, history = [] } = req.body || {};
 
     if (!message || !message.trim()) {
