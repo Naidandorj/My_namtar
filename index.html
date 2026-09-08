@@ -256,225 +256,105 @@ body.intro-lock{overflow:hidden}
   .introBtn{padding:9px 12px;font-size:12px}
   .section-title{font-size:29px}
 }
-   /* =========================
-   AI CHATBOT
-========================= */
 
-.ai-chat-button {
-  position: fixed;
-  right: 25px;
-  bottom: 25px;
+/* ==========================================================================
+   NAIDAA AI — MODERN AI CHAT
+   ========================================================================== */
+.naidaa-ai-fab{
+  position:fixed;right:24px;bottom:24px;z-index:10001;
+  width:64px;height:64px;border:0;border-radius:22px;
+  color:#fff;cursor:pointer;
+  background:linear-gradient(135deg,#2563eb,#06b6d4);
+  box-shadow:0 16px 40px rgba(37,99,235,.35);
+  display:grid;place-items:center;
+  transition:transform .25s,box-shadow .25s;
+}
+.naidaa-ai-fab:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 20px 50px rgba(37,99,235,.45)}
+.naidaa-ai-fab .ai-spark{font-size:27px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.25))}
+.naidaa-ai-fab .ai-pulse{
+  position:absolute;inset:-5px;border:1px solid rgba(37,99,235,.25);
+  border-radius:26px;animation:naidaaPulse 2.2s infinite;
+}
+@keyframes naidaaPulse{0%,100%{opacity:.15;transform:scale(.96)}50%{opacity:.8;transform:scale(1.04)}}
 
-  width: 62px;
-  height: 62px;
+.naidaa-ai-panel{
+  position:fixed;right:24px;bottom:102px;z-index:10000;
+  width:min(390px,calc(100vw - 24px));height:min(650px,calc(100vh - 130px));
+  min-height:480px;background:rgba(255,255,255,.97);
+  border:1px solid rgba(226,232,240,.9);border-radius:26px;overflow:hidden;
+  box-shadow:0 30px 90px rgba(15,23,42,.25);
+  display:none;flex-direction:column;
+  backdrop-filter:blur(20px);
+  animation:naidaaChatIn .28s cubic-bezier(.22,1,.36,1);
+}
+.naidaa-ai-panel.open{display:flex}
+@keyframes naidaaChatIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
 
-  border: none;
-  border-radius: 50%;
-
-  background: #111827;
-  color: white;
-
-  font-size: 28px;
-
-  cursor: pointer;
-
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-
-  z-index: 9999;
-
-  transition: 0.25s;
+.naidaa-ai-head{
+  padding:17px 18px;display:flex;align-items:center;gap:12px;color:#fff;
+  background:linear-gradient(135deg,#0b1220,#172554 58%,#0369a1);
+}
+.naidaa-ai-avatar{
+  width:42px;height:42px;border-radius:14px;background:rgba(255,255,255,.14);
+  display:grid;place-items:center;font-size:21px;border:1px solid rgba(255,255,255,.2)
+}
+.naidaa-ai-head-text{flex:1}.naidaa-ai-head-text strong{display:block;font-size:16px}
+.naidaa-ai-head-text span{font-size:11px;color:#bfdbfe}
+.naidaa-ai-online{display:inline-flex;align-items:center;gap:5px}
+.naidaa-ai-online i{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e}
+.naidaa-ai-close{
+  border:0;background:rgba(255,255,255,.1);color:#fff;width:34px;height:34px;
+  border-radius:10px;font-size:22px;cursor:pointer
 }
 
-.ai-chat-button:hover {
-  transform: scale(1.08);
+.naidaa-ai-body{flex:1;overflow-y:auto;padding:18px;background:linear-gradient(#f8fafc,#f1f5f9)}
+.naidaa-ai-welcome{
+  background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:15px;
+  color:#334155;font-size:13px;line-height:1.55;box-shadow:0 6px 20px rgba(15,23,42,.04)
+}
+.naidaa-ai-welcome strong{color:#0f172a}
+.naidaa-ai-suggestions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.naidaa-ai-suggestion{
+  border:1px solid #dbeafe;background:#fff;color:#1d4ed8;border-radius:12px;
+  padding:10px 9px;text-align:left;font-size:12px;cursor:pointer;transition:.2s
+}
+.naidaa-ai-suggestion:hover{background:#eff6ff;transform:translateY(-1px)}
+
+.naidaa-ai-msg{display:flex;margin:12px 0}.naidaa-ai-msg.user{justify-content:flex-end}
+.naidaa-ai-bubble{
+  max-width:84%;padding:11px 13px;border-radius:16px;background:#fff;border:1px solid #e2e8f0;
+  color:#1e293b;font-size:13px;line-height:1.55;box-shadow:0 4px 15px rgba(15,23,42,.035);white-space:pre-wrap
+}
+.naidaa-ai-msg.user .naidaa-ai-bubble{
+  color:#fff;border:0;background:linear-gradient(135deg,#2563eb,#0ea5e9);
+  border-bottom-right-radius:5px
+}
+.naidaa-ai-msg.bot .naidaa-ai-bubble{border-bottom-left-radius:5px}
+
+.naidaa-ai-typing{display:flex;gap:4px;align-items:center}
+.naidaa-ai-typing b{width:6px;height:6px;background:#94a3b8;border-radius:50%;animation:naidaaDot 1s infinite}
+.naidaa-ai-typing b:nth-child(2){animation-delay:.15s}.naidaa-ai-typing b:nth-child(3){animation-delay:.3s}
+@keyframes naidaaDot{0%,80%,100%{transform:translateY(0);opacity:.5}40%{transform:translateY(-4px);opacity:1}}
+
+.naidaa-ai-input{
+  padding:11px;background:#fff;border-top:1px solid #e2e8f0;display:flex;gap:8px
+}
+.naidaa-ai-input input{
+  min-width:0;flex:1;border:1px solid #dbe2ea;border-radius:14px;padding:12px 13px;
+  outline:none;font:inherit;font-size:13px;background:#f8fafc
+}
+.naidaa-ai-input input:focus{border-color:#60a5fa;background:#fff;box-shadow:0 0 0 3px rgba(59,130,246,.1)}
+.naidaa-ai-send{
+  width:44px;border:0;border-radius:14px;color:#fff;background:#0f172a;cursor:pointer;font-size:18px
+}
+.naidaa-ai-send:disabled{opacity:.5;cursor:not-allowed}
+.naidaa-ai-note{text-align:center;font-size:10px;color:#94a3b8;padding:0 10px 9px;background:#fff}
+
+@media(max-width:600px){
+  .naidaa-ai-fab{right:15px;bottom:15px;width:58px;height:58px;border-radius:19px}
+  .naidaa-ai-panel{right:10px;bottom:82px;width:calc(100vw - 20px);height:calc(100vh - 105px);min-height:430px;border-radius:22px}
 }
 
-
-/* CHAT WINDOW */
-
-.ai-chat-box {
-  position: fixed;
-
-  right: 25px;
-  bottom: 100px;
-
-  width: 360px;
-  height: 520px;
-
-  background: white;
-
-  border-radius: 20px;
-
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.25);
-
-  overflow: hidden;
-
-  display: none;
-
-  flex-direction: column;
-
-  z-index: 9998;
-
-  font-family:
-    Arial,
-    sans-serif;
-}
-
-
-/* HEADER */
-
-.ai-chat-header {
-  height: 70px;
-
-  background: #111827;
-  color: white;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  padding: 0 20px;
-}
-
-.ai-chat-header strong {
-  display: block;
-
-  font-size: 17px;
-}
-
-.ai-chat-header small {
-  opacity: 0.7;
-
-  font-size: 12px;
-}
-
-#aiCloseButton {
-  background: transparent;
-
-  border: none;
-
-  color: white;
-
-  font-size: 28px;
-
-  cursor: pointer;
-}
-
-
-/* MESSAGES */
-
-.ai-messages {
-  flex: 1;
-
-  padding: 18px;
-
-  overflow-y: auto;
-
-  background: #f5f7fb;
-}
-
-.ai-message {
-  max-width: 85%;
-
-  padding: 12px 15px;
-
-  margin-bottom: 12px;
-
-  border-radius: 15px;
-
-  font-size: 14px;
-
-  line-height: 1.5;
-}
-
-.ai-bot {
-  background: white;
-
-  color: #1f2937;
-
-  border-bottom-left-radius: 5px;
-}
-
-.ai-user {
-  margin-left: auto;
-
-  background: #111827;
-
-  color: white;
-
-  border-bottom-right-radius: 5px;
-}
-
-
-/* INPUT */
-
-.ai-input-area {
-  display: flex;
-
-  padding: 12px;
-
-  background: white;
-
-  border-top: 1px solid #eee;
-}
-
-#aiInput {
-  flex: 1;
-
-  border: 1px solid #ddd;
-
-  border-radius: 12px;
-
-  padding: 12px;
-
-  outline: none;
-
-  font-size: 14px;
-}
-
-#aiInput:focus {
-  border-color: #111827;
-}
-
-#aiSendButton {
-  width: 45px;
-
-  margin-left: 8px;
-
-  border: none;
-
-  border-radius: 12px;
-
-  background: #111827;
-
-  color: white;
-
-  cursor: pointer;
-
-  font-size: 18px;
-}
-
-
-/* MOBILE */
-
-@media (max-width: 600px) {
-
-  .ai-chat-box {
-    right: 10px;
-    bottom: 85px;
-    width: calc(100% - 20px);
-    height: 70vh;
-    max-height: 600px;
-  }
-
-  .ai-chat-button {
-    right: 15px;
-    bottom: 15px;
-  }
-}
 </style>
 </head>
 <body>
@@ -563,192 +443,4 @@ body.intro-lock{overflow:hidden}
       <div class="wrap">
         <h2 class="section-title">Боловсрол</h2>
         <p class="section-sub">Сурч эзэмшсэн мэдлэг</p>
-        <div class="card"><span class="meta">1999 — 2002</span><h3>Хөвсгөл аймаг Цэцэрлэг сумын 1-р арван жил</h3><p class="muted">Ерөнхий сургуулийн мэдлэг эзэмшсэн.</p></div>
-        <div class="card"><span class="meta">2002 — 2009</span><h3>Орхон аймгийн Баян-Өндөр сумын 2-р арван жил</h3><p class="muted">Шилжин ирж суралцсан.</p></div>
-        <div class="card"><span class="meta">2009 — 2013</span><h3>МУИС — Математик / Программ хангамж</h3><p class="muted">Математик болон программ хангамжийн чиглэлээр дээд боловсрол эзэмшсэн.</p></div>
-      </div>
-    </section>
-
-    <!-- 2.2.6 УР ЧАДВАР -->
-    <section id="skills">
-      <div class="wrap">
-        <h2 class="section-title">Ур чадвар</h2>
-        <p class="section-sub">Технологи болон бүтээлч хэрэгслүүд</p>
-        <div class="card">
-          <div class="tags">
-            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">PHP</span><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">C#</span><span class="tag">Visual Studio</span><span class="tag">WordPress</span><span class="tag">Joomla</span><span class="tag">Photoshop</span><span class="tag">CorelDRAW</span><span class="tag">Microsoft Office</span><span class="tag">GitHub</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2.2.7 АЖИЛ, ХӨДӨЛМӨРИЙН ЗАМНАЛ -->
-    <section id="career">
-      <div class="wrap">
-        <h2 class="section-title">Ажил, хөдөлмөрийн замнал</h2>
-        <p class="section-sub">Ажилласан байгууллага, албан тушаал</p>
-        <div class="card timeline">
-          <div class="item"><span class="meta">2009 — 2013</span><h3>Монгол Улсын Их Сургуулийн харьяа Улаанбаатар сургууль</h3><p class="muted">Суралцаж байх хугацаандаа компьютер техник хангамж чиглэлээр ажил хийж байсан.</p></div>
-          <div class="item"><span class="meta">2013 — 2014</span><h3>Зүүнхараа Хүүхдийн ордон — Биеийн тамир, компьютерийн багш</h3><p class="muted">Зүүнхараа Хүүхдийн ордонд биеийн тамир болон компьютерийн багшаар ажилласан.</p></div>
-          <div class="item"><span class="meta">2015 — 2016</span><h3>Орхон аймгийн Хөдөлмөрийн хэлтэс — Мэргэжилтэн</h3><p class="muted">Хөдөлмөрийн зах зээлийн мэдээ, мэдээлэл болон программ хангамж хариуцсан мэргэжилтнээр гэрээгээр ажилласан.</p></div>
-          <div class="item"><span class="meta">2017 — 2019</span><h3>Дорны Өртөө ХХК — ХДАМЖ</h3><p class="muted">Хүнд даацын автомашины жолоочийн чиглэлээр ажилласан.</p></div>
-          <div class="item"><span class="meta">2020 оны 7-р сар — Одоо</span><h3>Энержи Ресурс ХХК — ХДАМЖ</h3><p class="muted">Хүнд даацын автомашины жолоочийн мэргэжлээр тогтвор суурьшилтай ажиллаж байна.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2.2.8 ТӨСЛҮҮД -->
-    <section id="projects">
-      <div class="wrap">
-        <h2 class="section-title">Төслүүд</h2>
-        <p class="section-sub">Веб болон дижитал хийсэн зүйлс</p>
-        <div class="grid">
-          <div class="card"><span class="meta">WEB</span><h3>Personal Portfolio</h3><p class="muted">Өөрийн веб танилцуулга, CV болон төслүүдийг нэг дор харуулах веб.</p><a class="meta" href="https://naidandorj.github.io/My_new_web/" target="_blank">GitHub Pages →</a></div>
-         <div class="card"><span class="meta">WEB</span><h3>Орхон аймгийн гамшгийн мэдээллийн програм</h3><p class="muted">2005-2017 онуудын гамшгийн мэдээллийг нэг дор харуулах веб хуудас.</p><a class="meta" href="https://gamshigyn-medeelel.vercel.app/" target="_blank">gamshigyn-medeelel→</a></div>
-          <div class="card"><span class="meta">YouTube channel</span><h3>Ai ашиглан дуу зохиолгов.</h3><p class="muted"> Хөгжилтэй дуу зохиолгож үзэв.</p><a class="meta" href="https://youtu.be/7pBhygKwtfg?si=P_uze6udQtNVA1q-" target="_blank">YouTube Page→</a></div>
-           <div class="card"><span class="meta">E-COMMERCE</span><h3>Онлайн дэлгүүрийн төсөл</h3><p class="muted">Бэлэн хувцасны дэлгүүрийн веб, бүтээгдэхүүн танилцуулга болон хүргэлтийн мэдээллийн шийдэл.</p><a class="meta" href="https://www.facebook.com/share/19Gd934bKd/" target="_blank">Odko online shop →</a></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2.2.9 ХОБЬИ -->
-    <section id="hobbies">
-      <div class="wrap">
-        <h2 class="section-title">Авьяас, мэдлэг, гарын дүй, чадвар, хобби</h2>
-        <p class="section-sub">Сонирхдог спорт, оюуны тоглоомууд</p>
-        <div class="card">
-          <div class="tags"><span class="tag">♟ Шатар</span><span class="tag">♟ Даам</span><span class="tag">🏀 Сагсан бөмбөг</span><span class="tag">🏐 Гар бөмбөг</span><span class="tag">🎾 Теннис</span></div>
-          <p class="muted" style="margin-top:20px">Шатар, даам болон сагсан бөмбөг, гар бөмбөг, теннис зэрэг спортуудыг сонирхон тоглодог. Ялангуяа гар бөмбөг болон шатар тоглох дуртай.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2.2.10 ХОЛБОО БАРИХ -->
-    <section id="contact">
-      <div class="wrap">
-        <div class="contact">
-          <h2 class="section-title">Холбоо барих</h2>
-          <p class="muted">Ажил, төсөл болон хамтын ажиллагааны талаар холбогдоорой.</p>
-          <div class="contact-grid">
-            <a href="tel:+97695196569">📞 <strong>95196569</strong><br><span class="muted">Утас</span></a>
-            <a href="https://www.facebook.com/share/19Gd934bKd/" target="_blank">📘 <strong>Facebook</strong><br><span class="muted">Профайл / хуудас</span></a>
-            <a href="https://github.com/naidandorj" target="_blank">💻 <strong>GitHub</strong><br><span class="muted">Projects</span></a>
-            <a href="mailto:your-email@example.com">✉️ <strong>Email</strong><br><span class="muted">Имэйлээр холбогдох</span></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- 2.2.11 FOOTER -->
-  <footer>© 2026 Нямжавын Найдандорж · Online CV</footer>
-
-</div><!-- #cvPage төгсгөл -->
-
-<script>
-/* ==========================================================================
-   3) JAVASCRIPT ХЭСЭГ — Intro видеог удирдах логик
-   ========================================================================== */
-document.addEventListener('DOMContentLoaded', function () {
-
-  /* 3.1 Шаардлагатай HTML элементүүдийг олж авах */
-  const overlay   = document.getElementById('introVideo');   // Бүх видеог агуулсан давхарга
-  const video     = document.getElementById('introPlayer');  // <video> элемент
-  const skip      = document.getElementById('skipIntro');    // "Алгасах →" товч
-  const unmuteBtn = document.getElementById('unmuteBtn');    // "Дуу асаах" товч
-  const cv        = document.getElementById('cvPage');       // Жинхэнэ CV контент
-  const progress  = document.getElementById('introProgress');// Явцын шугам
-  let closed = false; // Видео аль хэдийн хаагдсан эсэхийг хянах хувьсагч
-
-  /* 3.2 Видео тоглож байх үед хуудсыг гүйлгэхийг хаах */
-  document.body.classList.add('intro-lock');
-
-  /* 3.3 Intro видеог хаагаад, CV хуудсыг харуулах функц */
-  function revealCV(){
-    if (closed) return;        // Аль хэдийн хаагдсан бол дахин ажиллуулахгүй
-    closed = true;
-
-    progress.style.width = '100%';      // Явцын шугамыг дүүргэх
-    overlay.classList.add('hide');      // Видеог алга болгох CSS анимаци эхлүүлэх
-    cv.classList.add('ready');          // CV хуудсыг харагдах болгох
-    document.body.classList.remove('intro-lock'); // Гүйлгэх боломжийг нээх
-
-    // Анимаци дуусахыг хүлээгээд, видео элементийг DOM-оос бүр мөсөн устгах
-    setTimeout(() => overlay.remove(), 1200);
-  }
-
-  /* 3.4 Видеоны явцыг (progress bar) шинэчлэх */
-  video.addEventListener('timeupdate', () => {
-    if (video.duration && isFinite(video.duration)) {
-      progress.style.width = (video.currentTime / video.duration * 100) + '%';
-    }
-  });
-
-  /* 3.5 Видео дуусах, эсвэл алдаа гарах үед CV хуудас руу шилжих */
-  video.addEventListener('ended', revealCV);
-  video.addEventListener('error', revealCV);
-
-  /* 3.6 "Алгасах →" товч дарахад шууд CV хуудас руу шилжих */
-  skip.addEventListener('click', revealCV);
-
-  /* 3.7 "Дуу асаах" товч дарахад видеоны дууг нээх */
-  unmuteBtn.addEventListener('click', () => {
-    video.muted = false;
-    video.volume = 1;
-    unmuteBtn.style.display = 'none'; // Дуу нээгдсэний дараа товчийг нуух
-  });
-
-  /* 3.8 Зарим гар утасны хөтөч автомат тоглуулахыг хориглодог тул
-        play()-г шууд дуудаж, амжилтгүй бол алдааг үл тоомсорлох */
-  video.play().catch(() => {});
-});
-</script>
-   <!-- AI CHATBOT -->
-
-<button id="aiChatButton" class="ai-chat-button">
-  🤖
-</button>
-
-<div id="aiChatBox" class="ai-chat-box">
-
-  <div class="ai-chat-header">
-    <div>
-      <strong>AI Туслах</strong>
-      <small>Онлайн</small>
-    </div>
-
-    <button id="aiCloseButton">×</button>
-  </div>
-
-  <div id="aiMessages" class="ai-messages">
-
-    <div class="ai-message ai-bot">
-      Сайн байна уу! 👋
-      <br><br>
-      Би Найдандоржийн веб сайтын AI туслах байна.
-      Надаас CV, ажил, веб хөгжүүлэлт болон бусад зүйлсийн талаар асууж болно.
-    </div>
-
-  </div>
-
-  <div class="ai-input-area">
-
-    <input
-      id="aiInput"
-      type="text"
-      placeholder="Асуултаа бичнэ үү..."
-      autocomplete="off"
-    />
-
-    <button id="aiSendButton">
-      ➤
-    </button>
-
-  </div>
-
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
+        <div class="card"><span class="meta">1999 — 2002</span><h3>Хөвсгөл аймаг Цэцэрлэг сумын 1-р арван жил</h3><p class="muted">Ерөн
